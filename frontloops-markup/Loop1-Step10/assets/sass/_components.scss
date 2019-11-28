@@ -31,6 +31,7 @@
 // SEARCH BAR
 .search-bar {
   border: none;
+  border-radius: none;
 
   &__legend {
     @include screenreader-only;
@@ -119,9 +120,11 @@
 // TIP
 .tip {
   max-width: 17rem;
+  box-sizing: border-box;
+  padding: .5rem;
 
   &__heading {
-    margin-bottom: 2.875rem;
+    margin-bottom: 2rem;
     font-size: .875rem;
     font-weight: 700;
     text-transform: uppercase;
