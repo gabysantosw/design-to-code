@@ -1,0 +1,226 @@
+// ------- UTILS
+
+// --- variables
+// colorbook
+$primary: hsl(50, 85%, 60%);
+$primary-overlay: hsla(50, 85%, 60%, .9);
+
+$light: hsl(50, 5%, 98%);
+$dark: hsl(50, 5%, 10%);
+
+$overlay: hsla(50, 5%, 10%, .8);
+
+// --- functions 
+
+// --- mixins
+// accesibility
+@mixin visuallyHidden {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.visuallyHidden {
+  @include visuallyHidden;
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: 60rem) {
+    @content;
+  }
+}
+
+
+// --- placeholders
+
+// ------- BASE 
+// resets
+body, h1, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+// base
+body {
+  font-family: Roboto, sans-serif;
+  color: $dark;
+}
+
+// ------- COMPONENTS
+.article {
+  width: 100%;
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+  background-position: 30% bottom;
+  display: flex;
+  justify-content: flex-end;
+
+  @include for-mobile {
+    // for small screens
+    flex-direction: column;
+  }
+
+  &__content {
+    flex-basis: 40%;
+    padding: calc(1rem + 1vh);
+    background-color: $primary-overlay;
+    clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+
+    // so order can be changed for (*1)
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    
+    @include for-mobile {
+      // for small screens
+      flex-basis: 100%;
+      clip-path: none;
+      // clip-path: polygon(0% 70%, 0% 100%, 100% 100%, 100% 60%);
+      // substitute clip-path for bg image? 
+      // -> YES, BUT ONLY HERE, SINCE THE WIDTH IS 100% IS EASIER
+      // ON LARGE SCREENS NOT SO MUCH
+      background-color: transparent;
+      background-image: 
+        linear-gradient(
+          -15deg,
+          $primary-overlay 45%,
+          transparent 45%
+        );
+    }
+  }
+
+  &__heading {
+    width: 20rem;
+    margin-bottom: 2em;
+
+    font-size: 2.5rem;
+    text-align: right;
+
+    @include for-mobile {
+      font-size: 1.5rem;
+    }
+  }
+  
+  &__heading-number {
+    font-size: 6.125rem;
+    display: block;
+
+    @include for-mobile {
+      font-size: 4rem;
+    }
+  }
+
+  &__views {
+    font-size: 1.25rem;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      
+      width: 1.3rem;
+      height: 1.3rem;
+      margin-right: .5rem;
+      background-image: url(../img/view.svg);
+      background-size: cover;
+    }
+  }
+
+  &__button {
+    // (*1)
+    order: -1;
+    margin-bottom: auto;
+
+    width: min-content;
+
+    color: inherit;
+    font-family: inherit;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 700;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      
+      width: 1.3rem;
+      height: 1.3rem;
+      margin-left: .5rem;
+      background-image: url(../img/more.svg);
+      background-size: cover;
+    }
+  }
+}
+
+.articles {
+  height: 100%;
+  position: absolute;
+  top: 0;
+
+  &__list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__link {
+    padding: calc(1rem + 1vh);
+    background-color: $overlay;
+    color: $light;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.--back {
+      &::before {
+        content: '';
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: url(../img/up.svg);
+        background-size: cover;
+      }
+    }
+
+    &.--next {
+      &::after {
+        content: '';
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: url(../img/down.svg);
+        background-size: cover;
+      }
+    }
+  }
+}
+
+// ------- LAYOUT
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+}
+
+// ------- PAGES 
+
+// ------- THEMES
