@@ -1,0 +1,214 @@
+// ------- UTILS
+
+// --- variables
+// === COLORBOOK ===
+$primary: hsl(205, 45%, 65%);
+$accent: hsl(15, 70%, 55%);
+$secondary: hsl(325, 35%, 50%);
+
+$light: hsl(205, 0%, 98%);
+$dark-light: hsl(205, 10%, 80%);
+
+$dark: hsl(205, 5%, 20%);
+$light-dark: hsl(205, 5%, 50%);
+
+$shadow: hsla(205, 45%, 30%, .5);
+
+// === SIZING ===
+$ADRESS_BAR: 96px;
+$breakpoint: 23.5rem; // 375px
+
+$left-main-pad: calc(.5rem + 1vw); // 1.4rem
+$top-main-pad: calc(.5rem + 1vh); // 1.25rem
+$inner-pad: .75rem; // 0.75rem
+
+// --- functions 
+
+// --- mixins
+
+@mixin for-mobile {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// --- placeholders
+
+// ------- BASE 
+
+// === RESET
+body, h2, ol, p {
+  margin: 0;
+}
+
+ol {
+  padding: 0;
+  list-style-type: none;
+}
+
+abbr {
+  border: none;
+  text-decoration: none;
+}
+
+// === BASE
+body {
+  background-color: $primary;
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+// ------- COMPONENTS
+.calendar {
+  width: 25rem;
+  max-width: 100%;
+  border-radius: .25rem;
+  background-color: $light;
+  box-shadow: 0 .25rem 1rem $shadow;
+
+  // sections
+  &__header {
+    padding: $top-main-pad $left-main-pad;
+    border-bottom: .15rem solid $dark-light;
+    color: $dark;
+    font-size: 1rem;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__grids {
+    padding: $top-main-pad $left-main-pad;
+    border-bottom: .15rem solid $dark-light;
+  }
+
+  &__week {
+    margin: 0 $inner-pad $inner-pad $inner-pad;
+    color: $light-dark;
+    font-size: 0.875rem;
+    font-weight: 700;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+  }
+
+  &__days {
+    margin: 0 $inner-pad;
+    color: $dark;
+    font-weight: 700;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: .5rem;
+    justify-items: center;
+    align-items: center;
+
+    @include for-mobile {
+      font-size: .8rem;
+    }
+  }
+
+  &__day {
+    // ems for modularity
+    $size: 2.2em;
+    width: $size;
+    height: $size;
+    box-sizing: border-box;
+    border: .2rem solid transparent;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // past and future days
+    &.--fill {
+      color: $dark-light;
+    }
+
+    // current day highlight
+    &.--current {
+      background-color: $accent;
+      color: $light;
+    }
+
+    &.--event {
+      position: relative;
+
+      &--accent {
+        border-color: $accent;
+      }
+
+      &--secondary {
+        border-color: $secondary;
+      }
+
+      // the notification of the event
+      .e {
+        $size: 1rem;
+
+        position: absolute;
+        right: - $size / 2;
+        top: - $size / 2;
+        
+        width: $size;
+        height: $size;
+        border-radius: 50%;
+        color: $light;
+        font-size: .75rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--accent {
+          background-color: $accent;
+        }
+
+        &--secondary {
+          background-color: $secondary;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    padding: $top-main-pad $left-main-pad;
+    font-size: 1rem;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__add {
+    $size: 2.5rem;
+    width: $size;
+    height: $size;
+    border: .2rem solid $accent;
+    border-radius: 50%;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// ------- LAYOUT
+.main {
+  height: calc(100vh - #{ $ADRESS_BAR });
+  box-sizing: border-box;
+  padding: calc(.5rem + 1vh) calc(.5rem + 1vh) 5vh calc(.5rem + 1vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ------- PAGES 
+
+// ------- THEMES
