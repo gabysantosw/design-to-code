@@ -1,0 +1,396 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(220, 90%, 60%);
+
+$dark: hsl(220, 10%, 5%);
+$light: hsl(220, 10%, 98%);
+
+
+// spacing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$MAX_SIZE: 28rem; // ~450px
+$card-overlap: 1rem;
+
+$main-pad: 1.25rem; // 20px
+$sub-pad: 2.25rem; // 36px
+
+// effects
+$shadow: hsla(220, 10%, 5%, .4);
+$overlay: hsla(220, 90%, 60%, .7);
+$light-overlay: hsla(220, 10%, 98%, .3);
+$main-radius: .25rem; // 4px
+
+// typography
+$t-main: 1rem; // 16px
+$t-sub: .875rem; // 14px
+
+// breakpoints
+$small-mobile: 23.5rem; // ~375px
+
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// MAKE CONTENT TAKE WHOLE SCREEN -> REMOVE CARD OVERLAP, CHANGE BACKGROUND, ETC
+@mixin layout-switch {
+  @media screen and (max-width: $MAX_SIZE + $card-overlap) {
+    @content;
+  }
+}
+
+@mixin for-small-mobile {
+  @media screen and (max-width: $small-mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, h1, h2, p, ol {
+  margin: 0;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
+ol, button {
+  padding: 0;
+}
+
+ol {
+  list-style-type: none;
+}
+
+// === MAIN ===
+
+////// --- COMPONENTS --- //////
+.header {
+  width: $MAX_SIZE;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: $main-pad;
+  background-color: $light;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include for-small-mobile {
+    $smaller-pad: $main-pad * 2 / 4;
+    padding: $smaller-pad $main-pad;
+  }
+
+  &__button {
+    $size: $MIN_TOUCH_SIZE;
+    width: $size;
+    height: $size;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: .4;
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    width: 60%;
+  }
+
+  &__title {
+    font-size: $t-main;
+    font-weight: 700;
+  }
+}
+
+.card {
+  $button-height: 2.5rem;
+  $sections-height: 2.25rem;
+  $current-progress: 50%;
+
+  width: calc(100% + #{$card-overlap});
+  box-sizing: border-box;
+  padding: $sub-pad;
+  margin-bottom: $button-height / 2;
+  border-radius: $main-radius;
+  background-image:
+    linear-gradient(to bottom, $overlay, $overlay),
+    url(../img/map.png);
+  background-position: center;
+  box-shadow: 0 .5rem 1rem $shadow;
+  color: $light;
+  
+  position: relative;
+
+  @include layout-switch {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  @include for-small-mobile {
+    $side-pad: $sub-pad * 2 / 3;
+    padding: $sub-pad $side-pad;
+  }
+
+  &__title {
+    height: $sections-height;
+    font-size: $t-main;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__from {
+    position: relative;
+
+    // the circle
+    &::after {
+      content: '';
+      position: relative;
+      top: -.1rem;
+      display: inline-block;
+
+      $size: .5rem;
+      width: $size;
+      height: $size;
+      margin-left: 1rem;
+      background-color: $light;
+      border-radius: 50%;
+    }
+  }
+
+  &__progress {
+    $bar-height: .2rem;
+    flex-grow: 1;
+    height: $bar-height;
+    background-color: $light-overlay;
+
+    position: relative;
+    top: 0;
+
+    // the car icon
+    &::before {
+      content: '';
+      position: absolute;
+      // starting position: on top of circle
+      top: -2rem;
+      left: -1rem;
+
+      $height: 1.5rem;
+      width: 100%;
+      height: $height;
+      background-image: 
+        url(../img/car.svg);
+      background-size: $height;
+      background-repeat: no-repeat;
+
+      // simulating 50% of progress
+      transform: translateX($current-progress);
+    }
+
+    // the progress
+    &::after {
+      content: '';
+      position: absolute;
+      // starting position: on top of circle
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: $bar-height;
+      background-color: $light;
+
+      transform-origin: left;
+
+      // simulating 50% of progress
+      transform: scaleX($current-progress);
+    }
+  }
+
+  &__to {
+
+    // the circle
+    &::before {
+      content: '';
+      position: relative;
+      top: -.1rem;
+      display: inline-block;
+
+      $size: .5rem;
+      width: $size;
+      height: $size;
+      margin-right: 1rem;
+      background-color: $light;
+      border-radius: 50%;
+    }
+  }
+
+  &__info {
+    height: $sections-height;
+    font-size: $t-main;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    position: absolute;
+    right: 5%;
+    bottom: -$button-height / 2;
+
+    height: $button-height;
+    padding: 0 1em;
+    border-radius: $main-radius;
+    background-color: $primary;
+    color: $light;
+    font-size: $t-main;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+
+    opacity: 1;
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+
+    // the icon
+    &::before {
+      content: '';
+      display: inline-block;
+
+      $size: 1em;
+      width: $size;
+      height: $size;
+      margin-right: .5rem;
+
+      background-image: 
+        url(../img/location.svg);
+      background-size: 100%;
+      background-position: bottom;
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: $main-pad;
+
+  &__title {
+    margin-bottom: $main-pad;;
+    font-size: $t-main;
+    font-weight: 700;
+  }
+
+  &__steps {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, min-content);
+    grid-gap: $main-pad;
+  }
+
+  &__step {
+    min-height: 3rem;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: min-content 1fr;
+    grid-gap: 0 1rem;
+    align-items: center;
+
+    // the icon
+    &::before {
+      content: '';
+      display: block;
+      grid-row: 1 / -1;
+
+      $size: 1.5rem;
+      width: $size;
+      height: $size;
+      background-image: url(../img/direction.svg);
+      background-size: 100%;
+    }
+  }
+
+  &__distance {
+    font-size: $t-sub;
+    opacity: .5;
+  }
+
+  &__direction {
+    font-size: $t-main;
+  }
+
+  &__view {
+    width: calc(100% + #{$main-pad});
+    min-height: 6rem;
+    border-radius: $main-radius 0 0 $main-radius;
+    background-image: url(../img/streetview.jpg);
+    background-size: 100%;
+    background-position: center;
+  }
+}
+
+////// --- LAYOUT --- //////
+body {
+  background-color: $primary;
+  color: $dark;
+  font-family: Roboto, sans-serif;
+
+  @include layout-switch {
+    background-color: $light;
+  }
+}
+
+.wrapper {
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include layout-switch {
+    align-items: flex-start;
+  }
+}
+
+.main {
+  width: $MAX_SIZE;
+  max-width: 100%;
+  background-color: $light;
+  box-shadow: 0 .5rem 2rem -1rem $shadow;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include layout-switch {
+    box-shadow: none;
+  }
+}
+
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
