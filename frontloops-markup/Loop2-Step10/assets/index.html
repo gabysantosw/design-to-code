@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Loop 2 - Challenge</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.min.css" />
+</head>
+<body>
+  <div class="wrapper"> <!-- .wrapper -->
+
+    <header class="header">
+      <div class="header__content">
+        <a href="#" class="header__logo">
+          <img src="./img/logo.png" alt="LinkedIn.">
+        </a>
+
+        <form action="#" class="header__form">
+          <label for="search-bar" class="search-bar__label visuallyHidden">
+            Search bar
+          </label>
+          <input id="search-bar" type="text" class="search-bar__input" placeholder="Search">
+          <button class="search-bar__button">
+            <img src="./img/search-icon.svg" alt="Execute search.">
+          </button>
+        </form>
+
+        <nav class="header__nav">
+          <!-- main navigation -->
+          <ul class="main-nav">
+            <li class="main-nav__item">
+              <a href="#" class="main-nav__link">
+                Home
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="#" class="main-nav__link">
+                Profile
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="#" class="main-nav__link">
+                Connections
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="#" class="main-nav__link">
+                Interest
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="#" class="main-nav__link main-nav__link--accent">
+                Try Premium
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <nav class="header__sub-nav">
+          <!-- account navigation -->
+          <ul class="account-nav"> <!-- .account-nav -->
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <img src="./img/comment-icon.svg" alt="Check comments." class="account-nav__icon">
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <img src="./img/notification-icon.svg" alt="See your notifications." class="account-nav__icon">
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <img src="./img/add-person-icon.svg" alt="Add others." class="account-nav__icon">
+              </a>
+            </li>
+            <li class="account-nav__item account-nav__item--account">
+              <a href="#" class="account-nav__link">
+                <img src="./img/avatar.jpg" alt="Check your profile." class="account-nav__profile">
+              </a>
+            </li>
+          </ul> <!-- .account-nav -->
+        </nav>
+      
+      </div>
+    </header>
+
+    <main class="main">
+      <nav class="main__nav">
+        <div class="main__nav-content">
+          <ul class="sub-nav">
+            <li class="sub-nav__item">
+              <a href="#posts" class="sub-nav__link">
+                Posts
+              </a>
+            </li>
+            <li class="sub-nav__item">
+              <a href="#background" class="sub-nav__link">
+                Background
+              </a>
+            </li>
+            <li class="sub-nav__item">
+              <a href="#recommendations" class="sub-nav__link">
+                Recommendations
+              </a>
+            </li>
+            <li class="sub-nav__item">
+              <a href="#following" class="sub-nav__link">
+                Following
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main__wrapper">
+        <section class="main__card">
+          <div class="card">
+            <img src="./img/bill-gates-avatar.png" alt="" class="card__avatar">
+            <h1 class="card__title">
+              Bill Gates
+            </h1>
+            <p class="card__text card__text--main">
+              Microsoft Founder
+            </p>
+            <p class="card__text">
+              Greater Seattle Area
+            </p>
+            <button class="card__button card__button--primary">
+              Follow
+            </button>
+            <button class="card__button">
+              Connect
+            </button>
+
+            <div class="card__data">
+              <p class="card__data-paragraph">
+                <span class="card__data-text card__data-text--main">
+                  200
+                </span>
+                <span class="card__data-text">
+                  connections
+                </span>
+              </p>
+              <p class="card__data-paragraph">
+                <span class="card__data-text card__data-text--main">
+                  1.9M
+                </span>
+                <span class="card__data-text">
+                  followers
+                </span>
+              </p>
+            </div>
+
+            <ul class="card__links">
+              <li>
+                <a href="#" class="card__link">
+                  linkedin.com/in/billgates
+                </a>
+              </li>
+              <li>
+                <a href="#" class="card__link">
+                  billgates.com
+                </a>
+              </li>
+            </ul>
+            <button class="card__export">
+              Export page as PDF
+            </button>
+          </div> <!-- .card -->
+
+        </section>
+
+        <div class="main__info">
+          <section id="posts" class="info">
+            <h2 class="info__heading">POSTS</h2>
+            <button class="info__move info__move--previous">
+              <img src="./img/arrow-left-icon.svg" alt="Check previous posts." class="info__move-icon">
+            </button>
+            <button class="info__move info__move--next">
+              <img src="./img/arrow-right-icon.svg" alt="Check next posts." class="info__move-icon">
+            </button>
+            <div class="info__posts">
+              <a href="#" class="post"> <!-- .post -->
+                <img src="./img/article1.jpg" alt="" class="post__image">
+                <h3 class="post__title">3 Myths that confuse top-managers</h3>
+                <p class="post__date">February 19, 2016</p>
+              </a> <!-- .post -->
+              <a href="#" class="post"> <!-- .post -->
+                <img src="./img/article2.jpg" alt="" class="post__image">
+                <h3 class="post__title">100 Myths that confuse top-managers</h3>
+                <p class="post__date">February 20, 2016</p>
+              </a> <!-- .post -->
+              <a href="#" class="post"> <!-- .post -->
+                <img src="./img/article3.jpg" alt="" class="post__image">
+                <h3 class="post__title">6000000 Myths that confuse top-managers</h3>
+                <p class="post__date">February 30, 2016</p>
+              </a> <!-- .post -->
+            </div>
+          </section>
+
+          <section id="background" class="info">
+            <h2 class="info__heading">BACKGROUND</h2>
+            <h3 class="info__sub-heading">
+              <img src="./img/summary-icon.svg" alt="" class="info__sub-heading-icon">
+              Summary
+            </h3>
+            <p class="info__paragraph">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, optio minus ipsam totam at nobis dicta aliquid tempore molestias unde magnam qui voluptatem tempora veniam veritatis eligendi nisi ducimus consequuntur?
+            </p>
+            <h3 class="info__sub-heading">
+              <img src="./img/work-icon.svg" alt="" class="info__sub-heading-icon">
+              Experience
+            </h3>
+              <ol class="info__timelines">
+                <li class="timeline">
+                  <div class="timeline__info">
+                    <span class="timeline__date">
+                      2000 - PRESENT
+                    </span>
+                    <span class="timeline__position">
+                      Co-founder, Chairman
+                    </span>
+                    <span class="timeline__company">
+                      Microsoft
+                    </span>
+                  </div>
+                  <img src="./img/logo-microsoft.png" alt="" class="timeline__image">
+                </li>
+                <li class="timeline">
+                  <div class="timeline__info">
+                    <span class="timeline__date">
+                      1992 - 1999
+                    </span>
+                    <span class="timeline__position">
+                      Senior Developer
+                    </span>
+                    <span class="timeline__company">
+                      Youtube
+                    </span>
+                  </div>
+                  <img src="./img/logo-youtube.png" alt="" class="timeline__image">
+                </li>
+              </ol>
+            <h3 class="info__sub-heading">
+              <img src="./img/education-icon.svg" alt="" class="info__sub-heading-icon">
+              Education
+            </h3>
+            <ol class="info__timelines">
+              <li class="timeline">
+                <div class="timeline__info">
+                  <span class="timeline__date">
+                    1973-1975
+                  </span>
+                  <span class="timeline__position">
+                    BS Computer Science
+                  </span>
+                  <span class="timeline__company">
+                    Harvard University
+                  </span>
+                </div>
+              </li>
+              <li class="timeline">
+                <div class="timeline__info">
+                  <span class="timeline__date">
+                    1960 - 1973
+                  </span>
+                  <span class="timeline__position">
+                    High School
+                  </span>
+                  <span class="timeline__company">
+                    Lakeside School, Seattle
+                  </span>
+                </div>
+              </li>
+            </ol>
+            <h3 class="info__sub-heading">
+              <img src="./img/skills-icon.svg" alt="" class="info__sub-heading-icon">
+              Skills
+            </h3>
+            <ul class="info__skills">
+              <li class="skill">
+                <span class="skill__references">
+                  74
+                </span>
+                <span class="visuallyHidden">
+                  references on:
+                </span>
+                <span class="skill__title">
+                  Social Media Marketing
+                </span>
+                <span class="visuallyHidden">
+                  . Skill approval by:
+                </span>
+                <span class="skill__persons">
+                  <img src="./img/avatar.jpg" alt="Name Lastname." class="skill__person">
+                  <img src="./img/avatar2.jpg" alt="Name Lastname." class="skill__person">
+                  <img src="./img/avatar3.jpg" alt="Name Lastname." class="skill__person">
+                  <span class="visuallyHidden">
+                    and other
+                  </span>
+                  <div class="skill__person skill__person--others">
+                    71+
+                  </div>
+                  <span class="visuallyHidden">
+                    persons.
+                  </span>
+                </span>
+              </li>
+              <li class="skill">
+                <span class="skill__references">
+                  67
+                </span>
+                <span class="visuallyHidden">
+                  references on:
+                </span>
+                <span class="skill__title">
+                  Web Development
+                </span>
+                <span class="visuallyHidden">
+                  . Skill approval by:
+                </span>
+                <span class="skill__persons">
+                  <img src="./img/avatar2.jpg" alt="Name Lastname." class="skill__person">
+                  <img src="./img/avatar3.jpg" alt="Name Lastname." class="skill__person">
+                  <img src="./img/avatar.jpg" alt="Name Lastname." class="skill__person">
+                  <span class="visuallyHidden">
+                    and other
+                  </span>
+                  <div class="skill__person skill__person--others">
+                    64+
+                  </div>
+                  <span class="visuallyHidden">
+                    persons.
+                  </span>
+                </span>
+              </li>
+            </ul>
+            <h3 class="info__sub-heading">
+              <img src="./img/star-icon.svg" alt="" class="info__sub-heading-icon">
+              Interests
+            </h3>
+            <ul class="info__interests">
+              <li class="info__interest">
+                Wireless Industry
+              </li>
+              <li class="info__interest">
+                Photography
+              </li>
+              <li class="info__interest">
+                Web Design
+              </li>
+              <li class="info__interest">
+                Technology
+              </li>
+            </ul>
+          </section>
+
+          <section id="recommendations" class="info">
+            <h2 class="info__heading">RECOMMENDATIONS</h2>
+            <button class="info__move info__move--previous">
+              <img src="./img/arrow-left-icon.svg" alt="Check previous posts." class="info__move-icon">
+            </button>
+            <button class="info__move info__move--next">
+              <img src="./img/arrow-right-icon.svg" alt="Check next posts." class="info__move-icon">
+            </button>
+
+            <ul class="info__recommendations">
+              <li class="recommendation">
+                <span class="recommendation__text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, sint.
+                </span>
+                <span class="recommendation__person">
+                  <img src="./img/avatar.jpg" alt="" class="recommendation__avatar">
+                  <span class="recommendation__by">
+                    Steve Jobs
+                  </span>
+                  <span class="recommendation__by recommendation__by--lighten">
+                    Apple
+                  </span>
+                </span>
+              </li>
+              <li class="recommendation">
+                <span class="recommendation__text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor fuga nostrum nam, non atque exercitationem quisquam omnis! Nulla, atque reprehenderit.
+                </span>
+                <span class="recommendation__person">
+                  <img src="./img/avatar2.jpg" alt="" class="recommendation__avatar">
+                  <span class="recommendation__by">
+                    Mark Zuckerberg
+                  </span>
+                  <span class="recommendation__by recommendation__by--lighten">
+                    Facebook
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section id="following" class="info">
+            <h2 class="info__heading">FOLLOWING</h2>
+            <ul class="info__following">
+              <li class="follower">
+                <img src="./img/logo-microsoft.png" alt="" class="follower__image">
+                <span class="follower__name">
+                  Microsoft
+                </span>
+                <button class="follower__button">
+                  Follow
+                </button>
+              </li>
+              <li class="follower">
+                <img src="./img/logo-amazon.jpg" alt="" class="follower__image">
+                <span class="follower__name">
+                  Amazon
+                </span>
+                <button class="follower__button">
+                  Follow
+                </button>
+              </li>
+              <li class="follower">
+                <img src="./img/logo-microsoft.png" alt="" class="follower__image">
+                <span class="follower__name">
+                  Microsoft Design
+                </span>
+                <button class="follower__button">
+                  Follow
+                </button>
+              </li>
+              <li class="follower">
+                <img src="./img/logo-microsoft.png" alt="" class="follower__image">
+                <span class="follower__name">
+                  Microsoft Developers
+                </span>
+                <button class="follower__button">
+                  Follow
+                </button>
+              </li>
+            </ul>
+            <button class="info__button">
+              See all (20)
+            </button>
+          </section>
+        </div>
+
+        <section class="main__extra">
+          <div class="people">
+            <h2 class="people__heading">
+              PEOPLE ALSO VIEWED
+            </h2>
+            <ul class="people__list">
+              <li class="people__item">
+                <img src="./img/avatar.jpg" alt="" class="people__avatar">
+                <span class="people__name">
+                  Sergey Brin
+                </span>
+                <span class="people__company">
+                  Google
+                </span>
+              </li>
+              <li class="people__item">
+                <img src="./img/avatar2.jpg" alt="" class="people__avatar">
+                <span class="people__name">
+                  Jeffrey Bezos
+                </span>
+                <span class="people__company">
+                  Amazon
+                </span>
+              </li>
+              <li class="people__item">
+                <img src="./img/avatar3.jpg" alt="" class="people__avatar">
+                <span class="people__name">
+                  Steve Jobs
+                </span>
+                <span class="people__company">
+                  Apple
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="more">
+            <h2 class="more__heading">
+              MORE INFLUENCERS
+            </h2>
+            <div class="more__content">
+            <button class="more__button">
+              <img src="./img/arrow-left-icon.svg" alt="go to previous Influencer." class="more__button-image">
+            </button>
+            <div class="more__influencer">
+              <img src="./img/avatar2.jpg" alt="" class="more__avatar">
+              <p class="more__name">Steve Jobs</p>
+              <p class="more__company">Apple</p>
+            </div>
+            <button class="more__button">
+              <img src="./img/arrow-right-icon.svg" alt="See next Influencer." class="more__button-image">
+            </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">
+        LinkedIn Corporation &copy; 2014
+      </p>
+    </footer>
+
+  </div> <!-- .wrapper -->
+</body>
+</html>
