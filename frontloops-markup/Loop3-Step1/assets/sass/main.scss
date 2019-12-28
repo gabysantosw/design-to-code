@@ -1,0 +1,497 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(5, 75%, 55%);
+$secundary: hsl(340, 70%, 65%);
+
+$background: hsl(250, 75%, 55%);
+
+$dark: hsl(5, 10%, 5%);
+$light: hsl(5, 10%, 95%);
+
+// spacing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$main-pad: 2.75rem;
+$sub-pad: 2.25rem;
+$plus-pad: 3.5rem;
+
+// effects
+$shadow: hsla(5, 10%, 5%, .5);
+$shadow-primary: hsla(5, 75%, 55%, .5);
+$shadow-background: hsla(250, 75%, 35%, .5);
+$main-radius: .5rem;
+$sub-radius: .25rem;
+
+// breakpoints
+$switch: 61rem;
+$mobile: 37.125rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// breakpoints
+@mixin layout-switch {
+  @media screen and (max-width: $switch) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, h1, p {
+  margin: 0;
+}
+
+fieldset, button {
+  border: none;
+  padding: 0;
+}
+
+// === UTILS ===
+.visuallyHidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  // for IE6/7
+  clip: rect(1px 1px 1px 1px);
+  white-space: nowrap;
+}
+
+// === MAIN ===
+
+////// --- COMPONENTS --- //////
+
+// === PRODUCT ===
+.product {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+
+  @include layout-switch {
+    flex-direction: column;
+  }
+  
+  // header section
+  &__header {
+    width: 27.5rem;
+    height: 40rem;
+    box-sizing: border-box;
+    padding-bottom: $main-pad;
+    border-radius: $main-radius;
+    background-color: $secundary;
+    box-shadow: 0 .5rem 2rem $shadow;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    position: relative;
+    z-index: 1;
+
+    @include layout-switch {
+      width: 40rem;
+      max-width: 100%;
+      height: 27.5rem;
+      padding-bottom: 1rem;
+    }
+
+    @include for-mobile {
+      height: 30rem;
+      max-height: 50vh;
+      border-radius: 0 0 $main-radius $main-radius;
+    }
+  }
+
+  &__logo {
+    // === LOGO COMPONENT
+    position: absolute;
+    top: 1.5rem;
+    left: 1.25rem;
+  }
+
+  &__number {
+    color: $light;
+    font-weight: 700;
+    font-size: 20rem;
+    letter-spacing: -1rem;
+
+    opacity: .2;
+
+    position: absolute;
+    top: 0;
+    right: 5%;
+
+    @include layout-switch {
+      font-size: 12rem;
+    }
+  }
+
+  &__preview {
+    // ===  PREVIEW COMPONENT
+    width: 30rem;
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    
+    @include layout-switch {
+      max-width: 90%;
+      top: 5%;
+      right: 20%;
+    }
+
+    @include for-mobile {
+      top: 10%;
+      right: 10%;
+    }
+  }
+
+  &__carousel-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__carousel-button {
+    $size: 1rem;
+
+    width: $size;
+    height: $size;
+    margin: .5rem;
+    border-radius: 50%;
+    background-color: $light;
+
+    opacity: .5;
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    &--current {
+      opacity: 1;
+    }
+  }
+
+  // content section
+  &__content {
+    // === CARD COMPONENT
+    $offset: 1rem;
+
+    width: 32rem;
+    height: 35rem;
+    padding: $plus-pad $main-pad $plus-pad #{$main-pad + $offset};
+    box-sizing: border-box;
+
+    position: relative;
+    left: -$offset;
+
+    @include layout-switch {
+      width: 35rem;
+      height: auto;
+      padding: $main-pad;
+      top: -$offset;
+      left: -0;
+    }
+
+    @include for-mobile {
+      width: 100%;
+      padding: 2rem 1rem 1rem 1rem;
+    }
+  }
+}
+
+// === LOGO ===
+.logo {
+  display: block;
+  width: 4rem;
+
+  &__source {
+    width: 100%;
+  }
+}
+
+// === PREVIEW ===
+.preview {
+
+  &__source {
+    width: 100%;
+  }
+
+  &__button {
+    $size: $MIN_TOUCH_SIZE;
+
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: $background;
+    box-shadow: 0 .25rem .5rem $shadow-background;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+
+    &--1 {
+      top: 15%;
+      left: 25%;
+    }
+
+    &--2 {
+      top: 45%;
+      left: 40%;
+    }
+
+    &--3 {
+      top: 60%;
+      left: 80%;
+    }
+  }
+
+  &__icon {
+    width: 80%;
+  }
+}
+
+// === CARD ===
+.card {
+  border-radius: $main-radius;
+  background-color: $light;
+  box-shadow: 0 .5rem 2rem $shadow;
+  font-size: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  @include for-mobile {
+    align-items: center;
+    box-shadow: none;
+  }
+
+  &__title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: .1em;
+
+    @include layout-switch {
+      font-size: 2.25rem;
+    }
+  }
+
+  // wrapper for current-price and before-price
+  &__price {
+    margin-bottom: $sub-pad;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__current-price {
+    margin-right: .5em;
+    font-size: 1.375rem;
+  }
+
+  &__before-price {
+    opacity: .5;
+    text-decoration: line-through;
+  }
+
+  &__description {
+    margin-bottom: $main-pad;
+  }
+
+  &__form {
+    // === FORM COMPONENT
+    flex-grow: 1;
+  }
+
+}
+
+// === FORM ===
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__fieldset {
+    margin-bottom: $sub-pad;
+
+    display: flex;
+    align-items: center;
+
+    @include for-mobile {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__legend {
+    margin-right: 1.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+
+    @include for-mobile {
+      width: 100%;
+      margin-bottom: .5rem;
+    }
+  }
+
+  &__label-radio {
+    $size: $MIN_TOUCH_SIZE;
+    width: $size;
+    height: $size;
+    margin-left: .5rem;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    font-size: 1.25rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: .5;
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    @include for-mobile {
+      margin: 0;
+    }
+  }
+
+  &__radio {
+    display: none;
+  }
+
+  &__radio:checked + &__label-radio {
+    color: $secundary;
+    border-color: $secundary;
+    opacity: 1;
+  }
+
+  &__number {
+    width: $MIN_TOUCH_SIZE;
+    box-sizing: border-box;
+    padding: .75rem 1rem;
+    border: none;
+    background: transparent;
+    font-size: 1.25rem;
+
+    // to remove default arrows
+    appearance: textfield;
+  }
+
+  &__label-number {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-number {
+    $size: $MIN_TOUCH_SIZE;
+    width: $size;
+    height: $size;
+
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+  }
+
+  &__button {
+    // === BUTTON COMPONENT
+    margin-top: auto;
+  }
+}
+
+// === BUTTON ===
+.button {
+  width: 18.75rem;
+  max-width: 100%;
+  padding: .5em 0;
+  border-radius: $sub-radius;
+  background-color: $primary;
+  box-shadow: 0 .5rem 1rem $shadow-primary;
+  color: $light;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+
+  transition: transform 250ms ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-.4rem);
+  }
+
+  @include for-mobile {
+    max-width: 80%;
+    padding: .75em 0;
+    font-size: 1rem;
+  }
+}
+
+////// --- LAYOUT --- //////
+body {
+  background-color: $background;
+  color: $dark;
+  font-family: Roboto, sans-serif;
+
+  @include for-mobile {
+    background-color: $light;
+  }
+}
+
+.main {
+  width: 100vw;
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+  box-sizing: border-box;
+  // taking into account the card offset
+  padding: 1rem 0 1rem 1rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include layout-switch {
+    padding: 1rem;
+  }
+
+  @include for-mobile {
+    padding: 0;
+  }
+}
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
