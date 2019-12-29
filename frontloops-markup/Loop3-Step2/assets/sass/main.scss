@@ -1,0 +1,434 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(225, 25%, 20%);
+$accent: hsl(225, 90%, 65%);
+
+$dark: hsl(225, 10%, 10%);
+$neutro: hsl(225, 10%, 70%);
+$light: hsl(225, 10%, 95%);
+
+// effects
+$shadow: hsla(225, 10%, 10%, .5);
+$overlay: hsla(225, 25%, 20%, .7);
+$main-opacity: .5;
+$main-radius: .5rem;
+
+// spacing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$v-main-pad: 1.875rem; // blue
+$h-main-pad: 1.5rem;// yellow
+$h-plus-pad: 2.5rem; // red
+$sub-pad: 1rem; // purple
+$flex-pad: 3.75rem; // pink
+$grid-pad: 1.25rem; // green
+$min-pad: .5rem; 
+
+// sizing
+$icon-size: 1.625rem;
+
+// breakpoints
+$switch: 48.4rem;
+$mobile: 35.5rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+// media queries
+@mixin layout-switch {
+  @media screen and (max-width: $switch) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+// === UTILILY CLASSES ===
+.visuallyHidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  // for IE6/7
+  clip: rect(1px 1px 1px 1px);
+  white-space: nowrap;
+}
+
+.icon-sprite {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+////// --- BASE --- //////
+// === RESET ===
+body, ul, h1, figure {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul, button {
+  padding: 0;
+}
+
+// === BASE ===
+
+////// --- COMPONENTS --- //////
+
+// === CARD ===
+.card {
+  width: 50rem;
+  max-width: 100%;
+  height: 38.5rem;
+  border-radius: $main-radius;
+  background-color: $light;
+  box-shadow: 0 .5rem 1rem $shadow;
+
+  display: flex;
+
+  @include layout-switch {
+    height: auto;
+    flex-direction: column;
+  }
+
+  &__header {
+    padding: $v-main-pad 0 $v-main-pad $h-main-pad;
+
+    @include layout-switch {
+      padding: $h-main-pad $v-main-pad 0 $v-main-pad;
+    }
+
+    @include for-mobile {
+      padding: $min-pad $min-pad 0 $min-pad;
+    }
+  }
+
+  &__main {
+    flex-grow: 1;
+    padding: $v-main-pad $h-plus-pad;
+
+    display: flex;
+    flex-direction: column;
+
+    @include for-mobile {
+      padding: $sub-pad;
+    }
+  }
+
+  &__content {
+    margin-bottom: $v-main-pad;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__grid {
+    flex-grow: 1;
+
+    // BUG: otherwise the grid overflows the container
+    overflow: hidden;
+
+    display: grid;
+    gap: $grid-pad;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+
+    @include layout-switch {
+      grid-template-rows: repeat(2, minmax(11rem, 20vh));
+      grid-auto-flow: dense;
+    }
+
+    @include for-mobile {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 11rem);
+    }
+  }
+}
+
+// === NAV ===
+.nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include layout-switch {
+    flex-direction: row;
+  }
+
+  &__list {
+    border-right: 2px solid $neutro;
+    margin-bottom: $flex-pad;
+
+    @include layout-switch {
+      margin-bottom: 0;
+      margin-right: $flex-pad;
+      border-right: none;
+      border-bottom: 2px solid $neutro;
+
+      display: flex;
+    }
+
+    @include for-mobile {
+      margin-right: 0;
+    }
+  }
+
+  &__item {
+
+  }
+
+  &__link {
+    $size: $MIN_TOUCH_SIZE;
+    display: block;
+    width: $size;
+    height: $size;
+    padding-right: $h-main-pad;
+    margin-bottom: $sub-pad;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    @include layout-switch {
+      margin-bottom: 0;
+      margin-right: $sub-pad;
+      padding-right: 0;
+      padding-bottom: $sub-pad;
+    }
+
+    @include for-mobile {
+      margin-right: 0;
+      padding-bottom: $min-pad / 2;
+    }
+
+    &--logo {
+      margin-bottom: $flex-pad;
+
+      @include layout-switch {
+        margin-bottom: 0;
+        margin-right: $flex-pad;
+      }
+
+      @include for-mobile {
+        margin-right: 0;
+      }
+    }
+
+    &--hover-line {
+      // the line
+      &::after {
+        $stroke-size: 3px;
+        content: '';
+        position: absolute;
+        right: 0;
+        display: block;
+        height: $icon-size;
+        width: $stroke-size;
+        border-radius: $main-radius 0 0 $main-radius;
+        background-color: $accent;
+
+        transform: scale(0);
+
+        @include layout-switch {
+          bottom: 0;
+          width: $icon-size;
+          height: $stroke-size;
+          border-radius: $main-radius $main-radius 0 0;
+          right: $icon-size / 3;
+        }
+      }
+
+      &:hover::after {
+        transition: 
+          opacity 250ms ease-in-out,
+          transform 250ms ease-in-out;
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: center;
+      }
+    }
+  }
+
+  &__icon {
+    $size: $icon-size;
+    width: $size;
+    height: $size;
+    fill: $accent;
+    filter: saturate(0%);
+    opacity: .7;
+  }
+
+  &__link:hover &__icon {
+    transition: 
+      opacity 250ms ease-in-out,
+      filter 250ms ease-in-out;
+    opacity: 1;
+    filter: saturate(90%);
+  }
+
+  &__avatar {
+    border: 3px solid $accent;
+    border-radius: 50%;
+  }
+}
+
+// === ALBUM-HEADING ===
+.album-heading {
+  display: flex;
+  flex-direction: column;
+
+  &__amount {
+    margin-bottom: $sub-pad;
+    color: $neutro;
+    font-size: 1rem;
+    font-weight: 500;
+
+    @include for-mobile {
+      margin-bottom: $min-pad;
+    }
+  }
+
+  &__name {
+    font-size: 3.625rem;
+
+    @include for-mobile {
+      font-size: 2rem;
+    }
+  }
+}
+
+// === BUTTON ===
+.button {
+  width: 7.2rem;
+  box-sizing: border-box;
+  padding: .5em;
+  border: 3px solid $accent;
+  border-radius: .25rem;
+  background-color: transparent;
+  color: $accent;
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+
+  opacity: .6;
+  transition: opacity 250ms ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  &--content {
+    margin-bottom: $sub-pad;
+
+    @include for-mobile {
+      margin-bottom: $min-pad;
+    }
+  }
+}
+
+// === GALLERY ===
+.gallery {
+  position: relative;
+
+  &:hover &__overlay,
+  &:focus &__overlay {
+    transition: transform 250ms ease-in;
+    transform-origin: center;
+    transform: scale(1);
+  }
+
+  &--span-2 {
+    grid-column-end: span 2;
+
+    @include for-mobile {
+      grid-column-end: span 1;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    background-color: $overlay;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: scale(0);
+  }
+
+  &__button {
+    $size: $MIN_TOUCH_SIZE;
+    width: $size;
+    height: $size;
+    border: none;
+    background-color: transparent;
+
+    opacity: .6;
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    fill: $light;
+  }
+}
+
+////// --- LAYOUT --- //////
+body {
+  background-color: $primary;
+  color: $dark;
+  font-family: Roboto, sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+  box-sizing: border-box;
+  padding: $sub-pad;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include for-mobile {
+    padding: $min-pad;
+  }
+}
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
