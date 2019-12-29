@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Loop 3 - Step 1</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.min.css" />
+</head>
+<body>
+  <main class="main">
+    <section class="product">
+      <div class="product__header">
+        <a href="#" class="product__logo logo">
+          <img src="./img/logo.png" alt="Nike." class="logo__source">
+        </a>
+
+        <div class="product__number">39</div>
+
+        <div class="product__preview preview">
+          <img src="./img/preview.png" alt="Nike FLyknit shoes in orange color." class="preview__source">
+          <button class="preview__button preview__button--1">
+            <img src="./img/icons/add.svg" alt="Show details." class="preview__icon">
+          </button>
+          <button class="preview__button preview__button--2">
+            <img src="./img/icons/add.svg" alt="Show details." class="preview__icon">
+          </button>
+          <button class="preview__button preview__button--3">
+            <img src="./img/icons/add.svg" alt="Show details." class="preview__icon">
+          </button>
+        </div>
+
+        <div class="product__carousel-buttons">
+          <button class="product__carousel-button">
+            <span class="visuallyHidden">
+              See first image.
+            </span>
+          </button>
+          <button class="product__carousel-button product__carousel-button--current">
+            <span class="visuallyHidden">
+              See second image.
+            </span>
+          </button>
+          <button class="product__carousel-button">
+            <span class="visuallyHidden">
+              See third image.
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="product__content card">
+        <h1 class="card__title">Nike Flyknit</h1>
+        <p class="card__price">
+          <span class="visuallyHidden">
+            Current price is
+          </span>
+          <span class="card__current-price">
+            $189.00
+          </span>
+          <span class="visuallyHidden">
+            , original price was 
+          </span>
+          <span class="card__before-price">
+            $259.00
+          </span>
+        </p>
+
+        <p class="card__description">
+          With a flexible Flyknit upper placed directly on top of a radically reinvented air cushioning system, the Nike Air VaporMax defies conventional style and provides an unbeliverably light, bouncy and flexible feel. 
+        </p>
+
+        <form action="#" class="card__form form">
+          <fieldset class="form__fieldset">
+            <p class="form__legend">Size</p>
+
+            <input id="size-s" name="size" type="radio" class="form__radio">
+            <label for="size-s" class="form__label-radio">S</label>
+
+            <input id="size-m" name="size" type="radio" class="form__radio">
+            <label for="size-m" class="form__label-radio">M</label>
+
+            <input id="size-l" name="size" type="radio" class="form__radio" checked>
+            <label for="size-l" class="form__label-radio">L</label>
+
+            <input id="size-xl" name="size" type="radio" class="form__radio">
+            <label for="size-xl" class="form__label-radio">XL</label>
+
+            <input id="size-xxl" name="size" type="radio" class="form__radio">
+            <label for="size-xxl" class="form__label-radio">XXL</label>
+          </fieldset>
+
+          <fieldset class="form__fieldset">
+            <p class="form__legend">Amount</p>
+            <label class="form__label-number" for="">
+              <button class="form__button-number">
+                <img src="./img/icons/arrow-left.svg" alt="One less amount." class="form__icon">
+              </button>
+              <input type="number" value="2" min="0" max="9" class="form__number">
+              <button class="form__button-number">
+                <img src="./img/icons/arrow-right.svg" alt="One more amount." class="form__icon">
+              </button>
+            </label>
+          </fieldset>
+
+          <button class="form__button button">
+            BUY NOW
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
