@@ -1,0 +1,212 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(205, 65%, 45%);
+$accent: hsl(150, 60%, 40%);
+
+$dark: hsl(205, 10%, 10%);
+$neutro: hsl(205, 10%, 50%);
+$light: hsl(205, 10%, 95%);
+
+// effects
+$shadow: hsla(205, 10%, 10%, .5);
+$main-radius: .25rem;
+
+// spacing
+$main-pad: 1.25rem; // yellow
+$side-pad: 1.5rem; // green
+$sub-pad: 1rem; // red
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$card-width:  17.5rem;
+$card-height: 33.75rem;
+$poster-height: 22.5rem;
+
+// typography
+$t-heading: 1.125rem;
+$t-regular: 1rem;
+$t-button: .875rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// === PLACEHOLDERS ===
+
+// === UTILS ===
+.visuallyHidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  // for IE6/7
+  clip: rect(1px 1px 1px 1px);
+  white-space: nowrap;
+}
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, h1, h2, P {
+  margin: 0;
+}
+
+button {
+  padding: 0;
+  border: none;
+}
+
+// === MAIN ===
+
+// animations
+@keyframes scale-in {
+  0% {
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+////// --- COMPONENTS --- //////
+
+// === CARD ===
+.card {
+  width: $card-width;
+  min-height: $card-height;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+
+  &__image {
+    position: absolute;
+    top: 0;
+
+    width: $card-width - $main-pad * 2;
+    height: $poster-height;
+    object-fit: cover;
+    box-shadow: 0 1.5rem 1rem -1rem $shadow;
+
+    z-index: 1;
+  }
+
+  
+  &__content {
+    width: 100%;
+    min-height: $card-height - $main-pad;
+    box-sizing: border-box;
+    margin-top: $main-pad;
+    padding-top: $poster-height;
+    background-color: $light;
+    border-radius: $main-radius;
+    box-shadow: 0 .5rem .5rem -.25rem $shadow;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    overflow: hidden;
+    transform: scale(0);
+    // transform-origin: top;
+  }
+  
+  // when whole .card is hovered
+  &:hover &__content {
+    // transition: transform 250ms ease-in-out;
+    // transform: scale(1);
+    animation: scale-in 400ms ease-in-out forwards;
+  }
+
+  &__title {
+    padding: 0 $side-pad;
+    font-size: $t-heading;
+    font-weight: 700;
+  }
+
+  &__description {
+    margin-bottom: $main-pad;
+    padding: 0 $side-pad;
+    color: $neutro;
+    font-size: $t-regular;
+    font-weight: 400;
+  }
+
+  &__pricing {
+    margin-bottom: $main-pad;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__current-price {
+    color: $accent;
+    font-size: $t-heading;
+    font-weight: 700;
+  }
+
+  &__before-price {
+    color: $neutro;
+    font-size: $t-regular;
+    font-weight: 400;
+    text-decoration: line-through;
+  }
+
+  &__button {
+    width: 100%;
+    background-color: $dark;
+    padding: $sub-pad 0;
+    color: $light;
+    font-size: $t-button;
+    font-weight: 700;
+
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+}
+
+////// --- LAYOUT --- //////
+body {
+  background-color: $primary;
+  color: $dark;
+  font-family: Roboto, sans-serif;
+}
+
+.main {
+  width: 100%;
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+  box-sizing: border-box;
+  padding: $side-pad;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, $card-width);
+    gap: $side-pad;
+    justify-content: center;
+  }
+}
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
