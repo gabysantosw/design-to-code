@@ -130,6 +130,7 @@ button {
   }
 
   &__title {
+    margin-bottom: .2em;
     padding: 0 $side-pad;
     font-size: $t-heading;
     font-weight: 700;
@@ -152,6 +153,7 @@ button {
   }
 
   &__current-price {
+    margin-bottom: .2em;
     color: $accent;
     font-size: $t-heading;
     font-weight: 700;
@@ -165,6 +167,7 @@ button {
   }
 
   &__button {
+    margin-top: auto;
     width: 100%;
     background-color: $dark;
     padding: $sub-pad 0;
