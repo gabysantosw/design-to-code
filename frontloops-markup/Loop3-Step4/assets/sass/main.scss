@@ -1,0 +1,175 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$dark: hsl(0, 0%, 40%);
+$light: hsl(0, 0%, 95%);
+
+// effects 
+$dark-shadow: hsla(0, 0%, 10%, .9);
+$shadow: hsla(0, 0%, 10%, .5);
+$main-radius: .25rem;
+
+// spacing
+$main-pad: .375rem;
+$sub-pad: .875rem;
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+
+// breakpoints
+$mobile: 27.5rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+@mixin for-mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+// === UTILS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, ul {
+  margin: 0;
+}
+
+ul, button {
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+// === MAIN ===
+
+////// --- COMPONENTS --- //////
+.album {
+  $size: 25rem;
+
+  width: $size;
+  height: $size;
+  border-radius: $main-radius;
+  background-color: $light;
+  box-shadow: 0 1.6rem .5rem -1rem $dark-shadow;
+
+  perspective: 100rem;
+  display: flex;
+
+  // the shadow
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 15%;
+    width: 25%;
+    height: 100%;
+    box-shadow: 1rem 0 1.5rem -1rem $shadow;
+
+    @include for-mobile {
+      right: 20%;
+    }
+  }
+
+  @include for-mobile {
+    $size: 18rem;
+
+    width: $size;
+    height: $size;
+  }
+
+  &__cover {
+    width: 50%;
+    height: 100%;
+    border-radius: $main-radius 0 0 $main-radius;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  &__hoverable {
+    width: 50%;
+    height: 100%;
+    border-radius: 0 $main-radius $main-radius 0;
+    object-fit: cover;
+    object-position: 78%;
+    // box-shadow: 0 1.6rem .5rem -1rem $dark-shadow;
+
+    z-index: 1;
+    transition: transform 250ms;
+    transform-style: preserve-3d;
+    transform-origin: left;
+  }
+
+  // on album hover ->
+  &:hover &__hoverable {
+    transform: rotateY(-50deg);
+
+    @include for-mobile {
+      transform: rotateY(-55deg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    padding: $main-pad;
+  }
+
+  &__option {
+
+  }
+
+  &__button {
+    $size: $MIN_TOUCH_SIZE;
+    width: $size;
+    height: $size;
+    margin-bottom: $sub-pad;
+    border: none;
+    background-color: transparent;
+
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .5;
+    }
+  }
+
+  &__icon {
+    width: 2rem;
+  }
+}
+
+////// --- LAYOUT --- //////
+body {
+  background-color: $light;
+}
+
+.main {
+  width: 100%;
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
