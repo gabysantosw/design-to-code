@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Loop 3 - Step 6</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.min.css" />
+</head>
+<body>
+  <main class="main">
+    <header class="main__header">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#" class="nav__link">
+              Cart
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">
+              Customer information
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">
+              Shipping method
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <h1 class="main__title">Payment Method</h1>
+    </header>
+
+    <div class="main__sections">
+      <section class="card main__cart">
+        <h2 class="visuallyHidden">Cart review</h2>
+        <ul class="cart">
+          <li class="cart__item">
+            <div class="cart__product">
+              <img src="./img/order.jpg" alt="" class="cart__image">
+              <span class="visuallyHidden">Quantity:</span>
+              <span class="cart__quantity">2</span>
+            </div>
+            <span class="cart__name">Chocolate bar</span>
+            <span class="cart__price">$2.49</span>
+          </li>
+          <li class="cart__item cart__item--subtotal">
+            <span class="cart__name">Subtotal</span>
+            <span class="cart__price">$7.98</span>
+          </li>
+          <li class="cart__item">
+            <span class="cart__name">Shipping</span>
+            <span class="cart__price">$7.98</span>
+          </li>
+          <li class="cart__item cart__item--total">
+            <span class="cart__name">Total</span>
+            <span class="cart__price">$7.98</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2 class="card__heading">Payment Information</h2>
+        <div class="card__payment">
+          <fieldset class="card__field card__field--max">
+            <label for="card-number" class="input__label">CARD NUMBER</label>
+            <input type="text" class="input__text" placeholder="**** **** **** ****">
+          </fieldset>
+
+          <fieldset class="card__field card__field--mobile-max">
+            <label for="card-holder" class="input__label">CARD HOLDER</label>
+            <input id="card-holder" type="text" class="input__text" placeholder="Michael Jordan">
+          </fieldset>
+
+          <fieldset class="card__field">
+            <label for="card-exp" class="input__label">EXP. DATE</label>
+            <input id="card-exp" type="text" class="input__text" placeholder="03/19">
+          </fieldset>
+
+          <fieldset class="card__field">
+            <label for="card-cvc" class="input__label">CVC</label>
+            <input id="card-cvc" type="text" class="input__text" placeholder="***">
+          </fieldset>
+        </div>
+      </section>
+      <section class="card card--reduced">
+        <h2 class="card__heading">Billing Address</h2>
+
+        <div class="card__billing">
+          <fieldset class="card__field">
+            <div class="radio__wrapper">
+              <input type="radio" name="billing" id="same" class="radio__input">
+              <label for="same" class="radio__label">Same as the shipping address</label>
+            </div>
+            <div class="radio__wrapper">
+              <input type="radio" name="billing" id="different" class="radio__input">
+              <label for="different" class="radio__label">Use a different billing address</label>
+            </div>
+          </fieldset>
+        </div>
+      </section>
+      <section class="main__controls">
+        <a href="#" class="main__link">Return to shipping method</a>
+        <button class="main__button">Complete Order</button>
+      </section>
+    </div>
+
+  </main>
+</body>
+</html>
