@@ -236,12 +236,12 @@ button {
       content: '';
       display: block;
       position: absolute;
-      top: 0;
+      top: .25rem;
       left: .4rem;
       width: $size;
       height: $size;
       border-radius: 50%;
-      background-color: red;
+      background-color: $primary;
 
       transform: scale(0);
     }
