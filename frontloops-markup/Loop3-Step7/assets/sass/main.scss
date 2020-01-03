@@ -1,0 +1,407 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(210, 30%, 25%);
+$secundary: hsl(210, 100%, 55%);
+$accent: hsl(115, 60%, 60%);
+
+$dark: hsl(210, 10%, 15%);
+$light-dark: hsl(210, 10%, 25%);
+$neutro: hsl(210, 10%, 50%);
+$light: hsl(210, 10%, 95%);
+
+// effects 
+$shadow: hsla(210, 10%, 15%, .5);
+$light-shadow: hsla(210, 10%, 95%, .5);
+$main-radius: 0.25rem;
+
+// spacing
+$main-pad: 1.25rem;
+$sub-pad: 1.375rem;
+$min-pad: 1rem;
+$inner-pad: .5rem;
+$h-gap: 0.25rem;
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+
+// typography
+$t-heading: 1.625rem;
+$t-subheading: 1.125rem;
+$t-base: 1rem;
+$t-min: 0.875rem;
+
+// breakpoints
+$switch: 47.5rem;
+$mobile: 32.75rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// media queries
+@mixin layout-switch {
+  @media screen and (max-width: $switch) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+// === UTILS ===
+.visuallyHidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  // for IE6/7
+  clip: rect(1px 1px 1px 1px);
+  white-space: nowrap;
+}
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, h1, p, ul, ol {
+  margin: 0;
+}
+
+ul, button, ol {
+  padding: 0;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+// === MAIN ===
+
+////// --- COMPONENTS --- //////
+.card {
+  width: 50rem;
+  max-width: 100%;
+  min-height: 36.75rem;
+  box-sizing: border-box;
+  padding: $main-pad;
+  border-radius: $main-radius;
+  background-color: $dark;
+  box-shadow: 0 .5rem 1rem $shadow;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__header {
+    padding-bottom: $main-pad;
+    border-bottom: 1px solid $light-shadow;
+
+    position: relative;
+  }
+
+  &__header-top {
+    margin-bottom: .1rem;
+    display: flex;
+    align-items: center;
+
+    @include for-mobile {
+      flex-wrap: wrap;
+      margin-bottom: $inner-pad;
+    }
+  }
+
+  &__heading {
+    margin-right: $sub-pad;
+    font-size: $t-heading;
+    font-weight: 700;
+
+    @include for-mobile {
+      width: calc(100% - #{$MIN_TOUCH_SIZE + .5rem});
+      margin-bottom: $inner-pad;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__tag {
+    margin-right: $inner-pad;
+    padding: .25em .5em;
+    border-radius: .125rem;
+    background-color: $light-dark;
+    font-size: $t-min;
+    font-weight: 700;
+    letter-spacing: .1em;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__place {
+    margin-bottom: $min-pad;
+    color: $neutro;
+  }
+
+  &__time {
+    font-size: $t-subheading;
+    font-weight: 700;
+  }
+
+  &__close {
+    $size: $MIN_TOUCH_SIZE;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: $size;
+    height: $size;
+    box-sizing: border-box;
+    border: 2px solid $neutro;
+    border-radius: 50%;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  &__icon {
+    $size: 1.5rem;
+    width: $size;
+    height: $size;
+  }
+
+  &__cinema-wrapper {
+    // === CINEMA COMPONENT
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__end {
+    padding-top: $main-pad;
+    border-top: 1px solid $light-shadow;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include for-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__list {
+    display: flex;
+
+    @include for-mobile {
+      margin-bottom: $min-pad;
+    }
+  }
+
+  &__item {
+    margin-right: $sub-pad;
+    color: $neutro;
+    font-size: $t-min;
+
+    &::before {
+      $size: 0.625rem;
+      content: '';
+      display: inline-block;
+
+      width: $size;
+      height: $size;
+      margin-right: $inner-pad;
+      border-radius: 50%;
+      background-color: $secundary;
+    }
+
+    &--accent {
+      &::before {
+        background-color: $accent;
+      }
+    }
+  }
+
+  &__button {
+    width: 8.75rem;
+    padding: $inner-pad;
+    border: none;
+    border-radius: $main-radius;
+    background-color: $secundary;
+    color: $light;
+    font-size: $t-base;
+    font-weight: 700;
+    text-align: center;
+    
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+}
+
+// === CINEMA ===
+.cinema {
+  width: 43rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  perspective: 30rem;
+
+  @include layout-switch {
+    padding: $main-pad * 2 0;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__screen {
+    width: 80%;
+    height: 4rem;
+    margin-bottom: $min-pad;
+    object-fit: cover;
+    box-shadow: 0 1.5rem 2rem -1.5rem $light-shadow;
+
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+
+    @include layout-switch {
+      width: 4rem;
+      height: 26rem;
+      margin-bottom: 0;
+      margin-right: $min-pad;
+      box-shadow: 1.5rem 0 2rem -1.5rem $light-shadow;
+
+      transform: rotateY(30deg);
+    }
+
+    @include for-mobile {
+      width: 3rem;
+      box-shadow: 1rem 0 2rem -1rem $light-shadow;
+    }
+  }
+
+  &__layout {
+    transform-style: preserve-3d;
+    transform: rotateX(30deg);
+
+    @include layout-switch {
+      display: flex;
+      transform: rotateY(-15deg);
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+
+    @include layout-switch {
+      flex-direction: column;
+    }
+  }
+
+  &__seats {
+    margin-left: $min-pad;
+    display: flex;
+
+    @include layout-switch {
+      margin: 0 $inner-pad;
+      flex-direction: column;
+    }
+
+    @include for-mobile {
+      margin: 0;
+    }
+  }
+
+  &__seat {
+    $size: $MIN_TOUCH_SIZE;
+    width: $size;
+    height: $size;
+    margin-right: $min-pad;
+    border: none;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    transition: opacity 250ms ease-in;
+
+    @include layout-switch {
+      margin-right: 0;
+    }
+
+    &:hover {
+      opacity: .5;
+    }
+
+    &::before {
+      $size: 1.25rem;
+      content: '';
+      display: block;
+      position: absolute;
+
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: $secundary;
+    }
+
+    &--accent {
+      &::before {
+        background-color: $accent;
+      }
+    }
+  }
+}
+
+////// --- LAYOUT --- //////
+body {
+  background-color: $primary;
+  color: $light;
+  font-family: Roboto, sans-serif;
+}
+
+.main {
+  width: 100%;
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+  box-sizing: border-box;
+  padding: .5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
