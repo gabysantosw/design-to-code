@@ -232,16 +232,16 @@ button {
     }
 
     &::after {
+      $size: 1rem;
       content: '';
       display: block;
       position: absolute;
-      top: 1.5rem / 2;
+      top: 0;
       left: .4rem;
-      $size: 1rem;
       width: $size;
       height: $size;
       border-radius: 50%;
-      background-color: $primary;
+      background-color: red;
 
       transform: scale(0);
     }
