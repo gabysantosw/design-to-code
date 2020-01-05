@@ -1,0 +1,515 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(255, 85%, 80%);
+$secundary: hsl(230, 15%, 40%);
+$accent: hsl(340, 75%, 75%);
+
+$dark: hsl(230, 20%, 30%);
+$neutro: hsl(230, 15%, 60%);
+$light: hsl(230, 10%, 95%);
+
+// effects
+$overlay: hsla(230, 10%, 10%, .3);
+$shadow: hsla(230, 10%, 10%, 1);
+$light-shadow: hsla(230, 10%, 95%, .1);
+$radius: .25rem;
+$wide-radius: 10rem;
+
+// spacing
+$side-pad: 2.5rem; // pink
+$main-pad: 1.875rem; // yellow
+$sub-pad: 1.25rem; // blue
+$min-pad: 1rem; // purple
+$inner-pad: .5rem; // green
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$card-width: 50rem;
+$card-height: 37.5rem;
+$article-width: 25rem;
+$article-height: 12.5rem;
+
+// typography
+$t-heading: 3.125rem;
+$t-subheading: 1.625rem;
+$t-base: 1rem;
+$t-min: 0.875rem;
+
+// breakpoints
+$switch: 46.25rem;
+$mobile: 35.25rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// media queries
+@mixin layout-switch {
+  @media screen and (max-width: $switch) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, ul, h1, h2, p, h3, figure {
+  margin: 0;
+}
+
+ul, button {
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+// === MAIN ===
+
+////// --- COMPONENTS --- //////
+
+// === CARD ===
+.card {
+  width: $card-width;
+  max-width: 100%;
+  min-height: $card-height;
+  box-sizing: border-box;
+  border-radius: $radius;
+  background-color: $secundary;
+  box-shadow: 0 .5rem 1rem $overlay;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  &__header {
+    padding: $main-pad $side-pad;
+
+    position: relative;
+
+    @include for-mobile {
+      padding: $min-pad $min-pad;
+    }
+  }
+
+  &__heading {
+    color: $accent;
+    font-size: $t-heading;
+    font-weight: 900;
+
+    @include for-mobile {
+      font-size: $t-subheading * 1.2;
+    }
+  }
+
+  &__subheading {
+    color: $neutro;
+    font-size: $t-min;
+    font-weight: 700;
+    letter-spacing: .1em;
+  }
+
+  &__slide {
+    padding: 0 $side-pad $main-pad $side-pad;
+    display: grid;
+    grid-template-columns: 1fr $article-width;
+    grid-template-rows: $article-height;
+    gap: $sub-pad;
+
+    @include layout-switch {
+      grid-template-columns: $article-width;
+      grid-template-rows: $article-height $article-height;
+      justify-content: center;
+    }
+
+    @include for-mobile {
+      grid-template-columns: 1fr;
+
+      margin-bottom: $main-pad;
+      padding: 0 $min-pad $main-pad $min-pad;
+    }
+  }
+
+  &__controls {
+    margin: 0 $side-pad;
+    padding-bottom: $min-pad;
+    border-bottom: 1px solid $neutro;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include for-mobile {
+      margin: 0 $min-pad;
+    }
+  }
+
+  &__articles {
+    height: 3rem;
+    overflow: hidden;
+    padding: $main-pad $side-pad;
+
+    @include for-mobile {
+      padding: $main-pad $min-pad;
+    }
+  }
+
+  &__article-heading {
+    font-size: $t-subheading;
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding: 0 $side-pad;
+    background-color: $dark;
+    box-shadow: .5rem 0 3rem $shadow;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include for-mobile {
+      flex-wrap: wrap;
+      padding: 0 0 $min-pad 0;
+      justify-content: center;
+    }
+  }
+
+  &__search {
+    width: 12rem;
+    box-sizing: border-box;
+    padding: .75rem 1rem;
+    border: 1px solid $light;
+    border-radius: $wide-radius;
+    background-color: transparent;
+    color: $light;
+
+    opacity: .5;
+
+    @include for-mobile {
+      width: 90%;
+    }
+
+    &:focus {
+      opacity: 1;
+    }
+  }
+}
+
+// === BUTTON ===
+.button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: $inner-pad;
+  border: 2px solid $light;
+  border-radius: $wide-radius;
+  background-color: transparent;
+  color: $light;
+  font-size: $t-min;
+  font-weight: 700;
+
+  display: flex; 
+  justify-content: center;
+
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: $light;
+    border-radius: $wide-radius;
+
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      opacity: .1;
+    }
+  }
+
+  &--header {
+    position: absolute;
+    right: $side-pad;
+    top: $main-pad;
+
+    width: 7.2rem;
+
+    @include for-mobile {
+      width: 6rem;
+      right: $min-pad;
+      top: $min-pad;
+    }
+  }
+
+  &--article {
+    box-shadow: 0 0 1rem 2rem $secundary;
+  }
+}
+
+// === VIDEO ===
+.video {
+  box-shadow: 0 1.5rem 2rem -1rem $shadow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__play {
+    $size: 3.75rem;
+
+    width: $size;
+    height: $size;
+    border: 2px solid $light;
+    border-radius: 50%;
+    background-color: $overlay;
+    color: $light;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+
+// === ARTICLE ===
+.article {
+  border-radius: $radius;
+  padding: $sub-pad $sub-pad 0 $sub-pad;
+  background-image: linear-gradient(to bottom, $overlay 50%, transparent 100%);
+
+  &__heading {
+    margin-bottom: .125em;
+    font-size: $t-subheading;
+    font-weight: 700;
+  }
+
+  &__subheading {
+    margin-bottom: $min-pad;
+    color: $neutro;
+    font-size: $t-base;
+    font-weight: 700;    
+  }
+
+  &__description {
+    height: 4rem;
+    margin-bottom: $min-pad;
+    overflow: hidden;
+    font-size: $t-min;
+    font-weight: 400;
+    line-height: 150%;
+  }
+}
+
+// === CONTROL ===
+.control {
+  $size: $MIN_TOUCH_SIZE;
+  width: $size;
+  height: $size;
+  border: none;
+  background-color: transparent;
+  color: $light;
+
+  transition: transform 250ms ease-in-out;
+
+  &:hover {
+    transform: scale(2);
+  }
+}
+
+// === DOTS ===
+.dots {
+  display: flex;
+
+  &__item {
+    $size: .25rem;
+
+    width: $size;
+    height: $size;
+    margin: $inner-pad;
+    border-radius: 50%;
+    background-color: $light;
+
+    &--current {
+      transform: scale(2);
+      background-color: $accent;
+    }
+  }
+}
+
+// === CATEGORIES ===
+.categories {
+  margin-bottom: $main-pad;
+  display: flex;
+
+  &__item {
+
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      margin-right: $sub-pad;
+      color: $neutro;
+      font-size: $t-min;
+      font-weight: 700;
+      text-decoration: none;
+
+      position: relative;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -$inner-pad;
+
+      width: 60%;
+      height: .25rem;
+      background-color: $accent;
+
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &--current {
+      &:link,
+      &:visited {
+        color: $light;
+      }
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+// === NAV ===
+.nav {
+  
+  &__list {
+    display: flex;
+
+    @include for-mobile {
+      margin-bottom: $min-pad;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      $size: $MIN_TOUCH_SIZE;
+      display: block;
+      width: $size;
+      height: $size;
+      padding: $inner-pad;
+      color: $light;
+      text-decoration: none;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $light-shadow;
+
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
+    }
+
+    &:hover {
+      &::after {
+        opacity: .3;
+      }
+    }
+
+    &--current {
+      &::after {
+        opacity: .5;
+      }
+
+      &:hover {
+        &::after {
+          opacity: .5;
+        }
+      }
+    }
+  }
+}
+
+////// --- LAYOUT --- //////
+body {
+  background-color: $primary;
+  color: $light;
+  font-family: Roboto, sans-serif;
+}
+
+.main {
+  width: 100%;
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+  box-sizing: border-box;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
