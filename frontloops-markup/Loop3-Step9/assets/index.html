@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Loop 3 - Step 9</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/main.min.css" />
+</head>
+<body>
+  <main class="main">
+    <div class="card">
+      <header class="card__header">
+        <ol class="card__temperatures">
+          <li class="temperature temperature--main">
+            <span class="temperature__icon">
+              <i class="material-icons">
+                wb_sunny
+              </i>
+            </span>
+            <span class="temperature__amount">
+              25°C
+            </span>
+          </li>
+          <li class="temperature">
+            <span class="temperature__icon">
+              <i class="material-icons">
+                wb_sunny
+              </i>
+            </span>
+            <abbr title="Tuesday" class="temperature__day">TUE</abbr>
+            <span class="temperature__amount">
+              25°C
+            </span>
+          </li>
+          <li class="temperature">
+            <span class="temperature__icon">
+              <i class="material-icons">
+                wb_cloudy
+              </i>
+            </span>
+            <abbr title="Wednesday" class="temperature__day">WED</abbr>
+            <span class="temperature__amount">
+              13°C
+            </span>
+          </li>
+          <li class="temperature">
+            <span class="temperature__icon">
+              <i class="material-icons">
+                wb_sunny
+              </i>
+            </span>
+            <abbr title="Thursday" class="temperature__day">THU</abbr>
+            <span class="temperature__amount">
+              22°C
+            </span>
+          </li>
+        </ol>
+
+        <p class="date">
+          <span class="date__day">Monday</span>
+          <span class="date__month">09 November</span>
+          <span class="date__time">11:32</span>
+          <span class="date__12hour">AM</span>
+        </p>
+      </header>
+
+      <section class="card__section card__section--border">
+        <div class="card__icon">
+          <i class="material-icons">
+            tv
+          </i>
+        </div>
+
+        <div class="card__tv">
+          <nav class="nav">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#" class="nav__link nav__link--current">FOX</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">abc</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">National Geographic</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">CNN</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">Nickelodeon</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="card__videos">
+            <figure class="video">
+              <div class="video__wrapper">
+                <img src="./img/video-local-programming.jpg" alt="" class="video__image">
+                <button class="video__play">
+                  <i class="material-icons">
+                    play_arrow
+                  </i>
+                </button>
+              </div>
+              <figcaption class="video__info">
+                <span class="video__time">6:00 AM - 12:00 PM</span>
+                <span class="video__title">Local Programming</span>
+              </figcaption>
+            </figure>
+
+            <figure class="video">
+              <div class="video__wrapper">
+                <img src="./img/video-family-guy.jpg" alt="" class="video__image">
+                <button class="video__play">
+                  <i class="material-icons">
+                    play_arrow
+                  </i>
+                </button>
+              </div>
+              <figcaption class="video__info">
+                <span class="video__time">12:00 PM - 13:00 PM</span>
+                <span class="video__title">Family Guy</span>
+              </figcaption>
+            </figure>
+
+            <figure class="video video--current">
+              <div class="video__wrapper">
+                <img src="./img/video-simpsons.jpg" alt="" class="video__image">
+                <button class="video__play">
+                  <i class="material-icons">
+                    play_arrow
+                  </i>
+                </button>
+              </div>
+              <figcaption class="video__info">
+                <span class="video__time">13:00 PM - 15:00 PM</span>
+                <span class="video__title">The Simpsons</span>
+              </figcaption>
+            </figure>
+
+            <figure class="video">
+              <div class="video__wrapper">
+                <img src="./img/video-futurama.jpg" alt="" class="video__image">
+                <button class="video__play">
+                  <i class="material-icons">
+                    play_arrow
+                  </i>
+                </button>
+              </div>
+              <figcaption class="video__info">
+                <span class="video__time">15:00 PM - 17:00 PM</span>
+                <span class="video__title">Futurama</span>
+              </figcaption>
+            </figure>
+
+            <figure class="video">
+              <div class="video__wrapper">
+                <img src="./img/video-american-dad.jpg" alt="" class="video__image">
+                <button class="video__play">
+                  <i class="material-icons">
+                    play_arrow
+                  </i>
+                </button>
+              </div>
+              <figcaption class="video__info">
+                <span class="video__time">17:00 PM - 20:00 PM</span>
+                <span class="video__title">American Dad</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="card__section">
+        <div class="card__icon">
+          <i class="material-icons">
+            music_note
+          </i>
+        </div>
+
+        <div class="card__music">
+          <div class="player">
+            <div class="player__header">
+              <img src="./img/music-with-you.jpg" alt="" class="player__image">
+              <p class="player__info">
+                <span class="player__song">I'm with you</span>
+                <span class="player__artist">Red Hot Chili Peppers</span>
+              </p>
+            </div>
+            <p class="player__time">
+              <span class="player__time-passed">0:59</span>
+              <span class="player__time-total">3.51</span>
+            </p>
+          </div>
+
+          <div class="card__songs">
+            <figure class="song song--current">
+              <img src="./img/music-with-you.jpg" alt="" class="song__image">
+              <figcaption class="song__name">
+                I'm with you
+              </figcaption>
+            </figure>
+            <figure class="song">
+              <img src="./img/music-butter.jpg" alt="" class="song__image">
+              <figcaption class="song__name">
+                Butter
+              </figcaption>
+            </figure>
+            <figure class="song">
+              <img src="./img/music-back-together.jpg" alt="" class="song__image">
+              <figcaption class="song__name">
+                Back together
+              </figcaption>
+            </figure>
+            <figure class="song">
+              <img src="./img/music-unwind.jpg" alt="" class="song__image">
+              <figcaption class="song__name">
+                Unwind
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

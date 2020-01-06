@@ -1,0 +1,521 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(225, 75%, 80%);
+
+$dark: hsl(225, 10%, 20%);
+$neutro: hsl(225, 10%, 50%);
+$light: hsl(225, 10%, 95%);
+
+// effects
+$shadow: hsla(225, 10%, 20%, .4);
+$overlay: hsla(225, 0%, 0%, .8);
+
+// spacing
+$main-pad: 2.5rem; // green
+$sub-pad: 1.75rem; // purple
+$inner-pad: 1.5rem; // blue
+$min-pad: 1.375rem; // yellow
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$card-width: 50rem;
+$card-height: 39.5rem;
+$header-height: 11rem;
+
+// typography
+$t-time: 3.75rem;
+$t-heading: 2.625rem;
+$t-subheading: 1.25rem;
+$t-big: 1.125rem;
+$t-base: 1rem;
+$t-min: 0.875rem;
+
+// breakpoint 
+$switch: 45rem;
+$mobile: 35rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// media queries
+@mixin layout-switch {
+  @media screen and (max-width: $switch) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, ol, p, ul, figure {
+  margin: 0;
+}
+
+ol, ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+// === MAIN ===
+body {
+  background-color: $primary;
+  color: $dark;
+  font-family: Roboto, sans-serif;
+}
+
+////// --- COMPONENTS --- //////
+
+// === TEMPERATURE ===
+.temperature {
+  margin-right: $inner-pad;
+  font-size: $t-base;
+  font-weight: 700;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include for-mobile {
+    margin-right: 1rem;
+  }
+
+  &__icon {
+    $size: 2.625rem;
+    width: $size;
+    height: $size;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--main &__icon {
+    $size: 3.125rem;
+    width: $size;
+    height: $size;
+
+    .material-icons {
+      font-size: 3rem;
+    }
+  }
+
+  &--main &__amount {
+    font-size: $t-heading;
+
+    @include for-mobile {
+      margin-top: .75rem;
+      font-size: $t-big;
+    }
+  }
+}
+
+// === DATE ===
+.date {
+  width: 18rem;
+  height: 4rem;
+  font-size: $t-big;
+  font-weight: 700;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-items: flex-end;
+  justify-content: flex-end;
+
+  @include for-mobile {
+    width: 100%;
+    height: 10rem;
+  }
+
+  &__time {
+    font-size: $t-time;
+    font-weight: 100;
+    line-height: 100%;
+  }
+
+  &__12hour {
+    font-size: $t-base;
+  }
+}
+
+// === NAV ===
+.nav {
+  margin-bottom: $sub-pad;
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      margin-right: $inner-pad;
+      color: $dark;
+      font-size: $t-base;
+      text-decoration: none;
+
+      opacity: .5;
+    }
+
+    &:hover {
+      &:link,
+      &:visited {
+        opacity: 1;
+      }
+    }
+
+    &--current {
+      &:link,
+      &:visited {
+        font-size: $t-big;
+        font-weight: 700;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// === VIDEO ===
+.video {
+  width: 10rem;
+
+  &__wrapper {
+    width: 100%;
+    height: 5.625rem;
+
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 .5rem 1rem $shadow;
+  }
+
+  &__play {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-image:
+      radial-gradient(circle at center, $overlay 2rem, $shadow 2rem, $shadow 100%)
+    ;
+    border: none;
+    color: $light;
+
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__info {
+    padding: $min-pad .5rem .5rem .5rem;
+    font-size: $t-min;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__time {
+    color: $neutro;
+  }
+
+  &--current &__wrapper {
+    transform: scale(1.3);
+    z-index: 1;
+  }
+}
+
+// === PLAYER ===
+.player {
+  width: 20rem;
+  max-width: 100%;
+  margin-right: $main-pad;
+  font-size: $t-min;
+  color: $neutro;
+
+  @include layout-switch {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+
+  &__header {
+    margin-bottom: .75rem;
+    display: flex;
+  }
+
+  &__image {
+    $size: 3.625rem;
+    width: $size;
+    height: $size;
+    margin-right: .75rem;
+    object-fit: cover;
+    box-shadow: 0 .5rem 1rem $shadow;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__song {
+    margin-bottom: .1em;
+    color: $dark;
+    font-size: $t-base;
+    font-weight: 700;
+  }
+
+  &__time {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__time-passed {
+    padding-right: $inner-pad;
+    position: relative;
+
+    &::after {
+      $size: .5rem;
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: calc(50% - #{$size / 2});
+      right: 0;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: $dark;
+    }
+  }
+
+  &__time-total {
+    flex-grow: 1;
+
+    position: relative;
+    text-align: right;
+
+    &::after {
+      $height: .125rem;
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: calc(50% - #{$height / 2});
+      left: 0;
+      width: calc(100% - #{$inner-pad * 2});
+      height: $height;
+      background-color: $shadow;
+    }
+  }
+}
+
+// === SONG ===
+.song {
+  width: 5.625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__image {
+    $size: 5.625rem;
+    width: $size;
+    height: $size;
+    margin-bottom: $min-pad;
+    object-fit: cover;
+    box-shadow: 0 .5rem 1rem $shadow;
+  }
+
+  &__name {
+    width: 100%;
+    font-size: $t-base;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(to right, transparent 80%, $light 100%)
+      ;
+    }
+  }
+
+  &--current &__image {
+    transform: scale(1.3);
+    z-index: 1;
+  }
+}
+
+////// --- LAYOUT --- //////
+.main {
+  width: 100%;
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+  box-sizing: border-box;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: $card-width;
+  max-width: 100%;
+  min-height: $card-height;
+  background-color: $light;
+  box-shadow: 0 .5rem 1rem $shadow;
+
+  overflow: hidden;
+
+  &__header {
+    min-height: $header-height;
+    padding: $sub-pad $main-pad;
+    box-sizing: border-box;
+    background-image: 
+      linear-gradient($overlay 0%, $overlay 100%),
+      url(../img/background.jpg)
+    ;
+    background-size: cover;
+    background-position: center;
+    color: $light;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include layout-switch {
+      flex-direction: column;
+    }
+
+    @include for-mobile {
+      padding: $min-pad;
+    }
+  }
+
+  &__temperatures {
+    display: flex;
+  }
+
+  &__section {
+    padding: $sub-pad $main-pad;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+    @include for-mobile {
+      padding: $min-pad;
+    }
+
+    &--border {
+      border-bottom: 1px solid $neutro;
+
+      position: relative;
+
+      &::after {
+        $width: 8rem;
+        $height: .4rem;
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: - $height / 2;
+        left: calc(50% - #{$width / 2});
+
+        width: $width;
+        height: $height;
+        border-radius: 1rem;
+        background-color: $primary;
+      }
+    }
+  }
+
+  &__icon {
+    $size: 2rem;
+
+    display: block;
+    width: $size;
+    height: $size;
+    margin-right: $main-pad;
+    color: $primary;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include layout-switch {
+      display: none;
+    }
+  }
+
+  &__tv {
+    flex-grow: 1;
+  }
+
+  &__videos {
+    display: flex;
+  }
+
+  &__music {
+    width: 100%;
+
+    @include layout-switch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include for-mobile {
+      align-items: flex-start;
+    }
+  }
+
+  &__songs {
+    display: flex;
+  }
+}
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
