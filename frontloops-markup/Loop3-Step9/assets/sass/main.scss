@@ -167,10 +167,16 @@ body {
   &__list {
     display: flex;
     align-items: center;
+
+    @include for-mobile {
+      flex-wrap: wrap;
+    }
   }
 
   &__item {
-
+    @include for-mobile {
+      margin: .25rem 0;
+    }
   }
 
   &__link {
@@ -205,6 +211,10 @@ body {
 // === VIDEO ===
 .video {
   width: 10rem;
+
+  @include for-mobile {
+    margin-bottom: 1rem;
+  }
 
   &__wrapper {
     width: 100%;
@@ -351,6 +361,10 @@ body {
   flex-direction: column;
   align-items: center;
 
+  @include for-mobile {
+    margin-top: 1rem;
+  }
+
   &__image {
     $size: 5.625rem;
     width: $size;
@@ -495,15 +509,21 @@ body {
 
   &__videos {
     display: flex;
+
+    @include for-mobile {
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
   }
 
   &__music {
     width: 100%;
+    display: flex;
+    align-items: center;
+
 
     @include layout-switch {
-      display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
     @include for-mobile {
@@ -513,6 +533,11 @@ body {
 
   &__songs {
     display: flex;
+
+    @include for-mobile {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 }
 
