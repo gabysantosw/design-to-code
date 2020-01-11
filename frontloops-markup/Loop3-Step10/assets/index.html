@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Loop 3 - Challenge</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.min.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__content">
+      <a href="#" class="header__logo">
+        <img src="./img/logo.svg" alt="IKEA homepage." class="logo">
+      </a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#" class="nav__link">
+              New
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">
+              Products
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">
+              Rooms
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">
+              Inspirations
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="search">
+        <i class="material-icons search__icon">
+          search
+        </i>
+
+        <input type="text" class="search__input" placeholder="Search products...">
+      </div>
+
+      <div class="cart">
+        <p class="cart__total">$19</p>
+        <button class="cart__button">
+          <i class="material-icons">
+            shopping_cart
+          </i>
+          <span class="cart__amount">2</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main__content">
+      <section class="main__account">
+        <div class="account">
+          <figure class="account__avatar">
+            <img src="./img/avatar.svg" alt="" class="account__image">
+            <span class="account__amount">2</span>
+          </figure>
+          <h2 class="account__title">Hello, Anna!</h2>
+          <h3 class="account__section">MY PROPOSALS</h3>
+          <ul class="account__proposals">
+            <li class="account__proposal">
+              <a href="#" class="account__proposal-link account__proposal-link--current">
+                <i class="material-icons account__proposal-icon">
+                  emoji_objects
+                </i>
+                <span class="account__proposal-text">
+                  Sofa Stockholm
+                </span>
+              </a>
+            </li>
+            <li class="account__proposal">
+              <a href="#" class="account__proposal-link">
+                <i class="material-icons account__proposal-icon">
+                  star
+                </i>
+                <span class="account__proposal-text">
+                  Sofa Reactive
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <h3 class="account__section">MY CHOICES</h3>
+          <ul class="account__choices">
+            <li class="account__choice">
+              <i class="material-icons account__choice-icon">
+                emoji_objects
+              </i>
+              <span class="account__choice-text">Armchairs</span>
+              <button class="account__choice-edit">
+                <i class="material-icons">
+                  edit
+                </i>
+              </button>
+            </li>
+            <li class="account__choice">
+              <i class="material-icons account__choice-icon">
+                star
+              </i>
+              <span class="account__choice-text">Fairly big</span>
+              <button class="account__choice-edit">
+                <i class="material-icons">
+                  edit
+                </i>
+              </button>
+            </li>
+          </ul>
+
+          <button class="account__chat">
+            <i class="material-icons">
+              chat
+            </i>
+          </button>
+        </div>
+      </section>
+
+      <section class="main__product">
+        <div class="product">
+          <nav class="product__breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb__item">
+                <a href="#" class="breadcrumb__link">Home</a>
+              </li>
+              <li class="breadcrumb__item">
+                <a href="#" class="breadcrumb__link">Products</a>
+              </li>
+              <li class="breadcrumb__item">
+                <a href="#" class="breadcrumb__link">Sofas & Armchairs</a>
+              </li>
+              <li class="breadcrumb__item">
+                <a href="#" class="breadcrumb__link breadcrumb__link--current">Stockholm</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="product__main">
+            <figure class="product__figure">
+              <img src="./img/sofa.png" alt="" class="product__image">
+              <button class="highlight-button highlight-button--product">
+                <i class="material-icons">
+                  add
+                </i>
+              </button>
+              <span class="product__height">74cm</span>
+            </figure>
+
+            <div class="product__info">
+              <p class="product__code">STOCKHOLM (002.450.50)</p>
+              <h2 class="product__heading">Three-Seat Sofa</h2>
+              <p class="product__description">
+                Highly durable full-grain leather which is soft and has a natural look and feel.
+                <a href="#" class="product__link">View More</a>
+              </p>
+              <ul class="product__sizings">
+                <li class="product__sizing">
+                  <i class="material-icons product__sizing-icon">
+                    height
+                  </i>
+                  74cm
+                </li>
+                <li class="product__sizing">
+                  <i class="material-icons product__sizing-icon">
+                    space_bar
+                  </i>
+                  195cm
+                </li>
+                <li class="product__sizing">
+                  <i class="material-icons product__sizing-icon">
+                    format_italic
+                  </i>
+                  86cm
+                </li>
+              </ul>
+
+              <div class="product__cta">
+                <p class="price price--main">$1400</p>
+                <button class="button">
+                  ADD TO CART
+                  <i class="material-icons button__icon">
+                    add
+                  </i>
+                </button>
+              </div>
+            </div>
+
+            <div class="product__features">
+              <h3 class="product__features-heading">FEATURES</h3>
+              <ul class="features">
+                <li class="features__item">
+                  <a href="#" class="features__link">
+                    <i class="material-icons">
+                      card_giftcard
+                    </i>
+                  </a>
+                </li>
+                <li class="features__item">
+                  <a href="#" class="features__link">
+                    <i class="material-icons">
+                      access_time
+                    </i>
+                  </a>
+                </li>
+                <li class="features__item">
+                  <a href="#" class="features__link">
+                    <i class="material-icons">
+                      security
+                    </i>
+                  </a>
+                </li>
+                <li class="features__item">
+                  <a href="#" class="features__link">
+                    <i class="material-icons">
+                      grid_on
+                    </i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="product__showcase">
+            <figure class="showcase">
+              <img src="./img/preview1.jpeg" alt="" class="showcase__image">
+              <button class="highlight-button highlight-button--product1">
+                <i class="material-icons">add</i>
+              </button>
+              <button class="highlight-button highlight-button--product2">
+                <i class="material-icons">add</i>
+              </button>
+              <button class="highlight-button highlight-button--product3">
+                <i class="material-icons">add</i>
+              </button>
+
+              <figcaption class="showcase__card">
+                <p class="showcase__amount">
+                  BUY ALL PRODUCTS (4)
+                </p>
+                <p class="price price--showcase">
+                  $1481
+                </p>
+                <button class="button">
+                  ADD TO CART
+                  <i class="material-icons button__icon">
+                    add
+                  </i>
+                </button>
+              </figcaption>
+            </figure>
+
+            <div class="showcase__previews">
+              <figure class="showcase__preview-wrapper showcase__preview-wrapper--current">
+                <img src="./img/preview1.jpeg" alt="" class="showcase__preview">
+              </figure>
+              <figure class="showcase__preview-wrapper">
+                <img src="./img/preview2.jpeg" alt="" class="showcase__preview">
+              </figure>
+              <figure class="showcase__preview-wrapper">
+                <img src="./img/preview3.jpeg" alt="" class="showcase__preview">
+              </figure>
+            </div>
+          </div>
+
+          <ul class="product__blocks">
+            <li class="block">
+              <a href="#" class="block__link">
+                <i class="material-icons block__icon">
+                  card_giftcard
+                </i>
+                <h3 class="block__heading">Bonus card as a gift</h3>
+                <button class="block__button">
+                  <i class="material-icons">
+                    arrow_forward
+                  </i>
+                </button>
+              </a>
+            </li>
+            <li class="block">
+              <a href="#" class="block__link">
+                <i class="material-icons block__icon">
+                  access_time
+                </i>
+                <h3 class="block__heading">24 hour support</h3>
+                <button class="block__button">
+                  <i class="material-icons">
+                    arrow_forward
+                  </i>
+                </button>
+              </a>
+            </li>
+            <li class="block">
+              <a href="#" class="block__link">
+                <i class="material-icons block__icon">
+                  security
+                </i>
+                <h3 class="block__heading">10 year guarantee</h3>
+                <button class="block__button">
+                  <i class="material-icons">
+                    arrow_forward
+                  </i>
+                </button>
+              </a>
+            </li>
+            <li class="block">
+              <a href="#" class="block__link">
+                <i class="material-icons block__icon">
+                  grid_on
+                </i>
+                <h3 class="block__heading">Newest technologies</h3>
+                <button class="block__button">
+                  <i class="material-icons">
+                    arrow_forward
+                  </i>
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="main__more section">
+        <div class="section__info">
+          <h3 class="section__heading">You might like</h3>
+          <p class="section__subheading">1 OF 5</p>
+
+          <div class="section__buttons">
+            <button class="section__button">
+              <i class="material-icons">arrow_back</i>
+            </button>
+            <button class="section__button">
+              <i class="material-icons">arrow_forward</i>
+            </button>
+          </div>
+        </div>
+
+        <ul class="section__objects">
+          <li class="object">
+            <img src="./img/similar1.jpg" alt="" class="object__image">
+            <h4 class="object__heading">Serving Bowl</h4>
+            <p class="object__code">STOCKHOLM 2017</p>
+            <div class="price price--object">$12</div>
+            <button class="button button--object">
+              ADD TO CART
+              <i class="material-icons button__icon">add</i>
+            </button>
+          </li>
+
+          <li class="object">
+            <img src="./img/similar2.jpg" alt="" class="object__image">
+            <h4 class="object__heading">Pendant Lamp</h4>
+            <p class="object__code">FOTO</p>
+            <div class="price price--object">$24</div>
+            <button class="button button--object">
+              ADD TO CART
+              <i class="material-icons button__icon">add</i>
+            </button>
+          </li>
+
+          <li class="object">
+            <img src="./img/similar3.jpg" alt="" class="object__image">
+            <h4 class="object__heading">Wall Clock</h4>
+            <p class="object__code">SIPPRA</p>
+            <div class="price price--object">$14</div>
+            <button class="button button--object">
+              ADD TO CART
+              <i class="material-icons button__icon">add</i>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="main__social section">
+        <div class="section__info">
+          <h3 class="section__heading">From our clients</h3>
+          <ul class="section__tags">
+            <li class="section__tag">#STOCKHOLM</li>
+            <li class="section__tag">#IKEA</li>
+          </ul>
+          <a href="#" class="section__link">View our Instagram</a>
+        </div>
+
+        <div class="section__posts">
+          <figure class="post post--wide">
+            <img src="./img/gallery1.jpg" alt="" class="post__image">
+            <figcaption class="post__info">
+              <img src="./img/user.jpg" alt="" class="post__avatar">
+              <span class="post__name">John Maybe</span>
+            </figcaption>
+          </figure>
+          <figure class="post">
+            <img src="./img/gallery2.jpg" alt="" class="post__image">
+            <figcaption class="post__info">
+              <img src="./img/user.jpg" alt="" class="post__avatar">
+              <span class="post__name">John Maybe</span>
+            </figcaption>
+          </figure>
+          <figure class="post">
+            <img src="./img/gallery3.jpg" alt="" class="post__image">
+            <figcaption class="post__info post__info--button">
+              <button class="post__button">
+                <i class="material-icons">add</i>
+              </button>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a href="#" class="footer__logo">
+      <img src="./img/logo.svg" alt="IKEA homepage." class="logo">
+    </a>
+
+    <p class="footer__copyright">&copy; Inter IKEA Systems B.V. 1999-2017</p>
+    <nav class="footer__nav">
+      <ul class="footer__list">
+        <li>
+          <a href="#" class="footer__link">Catalogues</a>
+        </li>
+        <li>
+          <a href="#" class="footer__link">Services</a>
+        </li>
+        <li>
+          <a href="#" class="footer__link">Planning tools</a>
+        </li>
+        <li>
+          <a href="#" class="footer__link">Jobs</a>
+        </li>
+        <li>
+          <a href="#" class="footer__link">FAQ</a>
+        </li>
+        <li>
+          <a href="#" class="footer__link">Contact us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="footer__button">
+      <i class="material-icons">
+        arrow_upward
+      </i>
+    </button>
+
+    <div class="footer__section">
+      <h2 class="footer__heading">CONTACT US</h2>
+        <ul class="features">
+          <li class="features__item">
+            <a href="#" class="features__link">
+              <i class="material-icons">
+                local_phone
+              </i>
+            </a>
+          </li>
+          <li class="features__item">
+            <a href="#" class="features__link">
+              <i class="material-icons">
+                email
+              </i>
+            </a>
+          </li>
+          <li class="features__item">
+            <a href="#" class="features__link">
+              <i class="material-icons">
+                chat
+              </i>
+            </a>
+          </li>
+          <li class="features__item">
+            <a href="#" class="features__link">
+              <i class="material-icons">
+                where_to_vote
+              </i>
+            </a>
+          </li>
+        </ul>
+    </div>
+  </footer>
+</body>
+</html>
+
+<!--
+  This lesson is inspired by Netguru design concept.
+  https://www.netguru.co/blog/ikea-assist-bot-will-help-you-choose-perfect-home-accessories
+-->
