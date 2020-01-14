@@ -38,8 +38,6 @@ $card-height: 29.75rem;
 $switch: 43.75rem;
 $mobile: 29.75rem;
 
-// === FUNCTIONS ===
-
 // === MIXINS ===
 
 // media queries
@@ -54,8 +52,6 @@ $mobile: 29.75rem;
     @content;
   }
 }
-
-// === PLACEHOLDERS ===
 
 ////// --- BASE --- //////
 
@@ -207,9 +203,3 @@ $button-pad: 0.875rem;
     margin-top: auto;
   }
 }
-
-////// --- LAYOUT --- //////
-
-////// --- PAGES --- //////
-
-////// --- THEMES --- //////
