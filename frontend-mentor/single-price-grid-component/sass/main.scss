@@ -1,0 +1,215 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(179, 62%, 43%);
+$light-primary: hsl(179, 45%, 50%);
+$secondary: hsl(205, 45%, 90%);
+
+$accent: hsl(71, 73%, 50%);
+
+$light: hsl(179, 62%, 95%);
+$o-light: hsla(179, 62%, 95%, .5);
+$o-dark: hsla(179, 22%, 10%, .5);
+
+// effects
+$shadow: hsla(179, 20%, 20%, .2);
+$radius: .5rem;
+
+// spacing
+$big-pad: 2.375rem;
+$main-pad: 1.375rem;
+$sub-pad: 0.875rem;
+
+// typography
+$t-heading: 1.5rem;
+$t-subheading: 1.125rem;
+$t-base: 1rem;
+$t-min: 0.875rem;
+$t-big: 1.875rem;
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$card-width: 39.5rem;
+$card-height: 29.75rem;
+
+// breakpoints
+$switch: 43.75rem;
+$mobile: 29.75rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// media queries
+@mixin layout-switch {
+  @media screen and (max-width: $switch) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, h1, h2, ul, p {
+  margin: 0;
+}
+
+ul, button {
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+// === MAIN ===
+body {
+  background-color: $secondary;
+  color: $light;
+  font-family: 'Karla', sans-serif;
+  line-height: 150%;
+}
+
+.main {
+  min-height: calc(100vh - #{$ADDRESS_BAR});
+  box-sizing: border-box;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+////// --- COMPONENTS --- //////
+
+// === CARD ===
+.card {
+  width: $card-width;
+  min-height: $card-height;
+  border-radius: $radius;
+  box-shadow: 0 .5rem 1rem $shadow;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @include layout-switch {
+    grid-template-columns: 1fr;
+  }
+  
+  &__section {
+    min-height: 12rem;
+    padding: $big-pad;
+    background-color: $primary;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    @include for-mobile {
+      padding: $main-pad;
+    }
+    
+    &--main {
+      grid-column: 1 / -1;
+      min-height: 1rem;
+      background-color: $light;
+    }
+
+    &--light {
+      background-color: $light-primary;
+    }
+  }
+
+  &__heading {
+    margin-bottom: $main-pad;
+    color: $primary;
+    font-size: $t-heading;
+    font-weight: 700;
+  }
+
+  &__subheading {
+    margin-bottom: $main-pad;
+    font-size: $t-subheading;
+    font-weight: 700;
+
+    &--main {
+      margin-bottom: $sub-pad;
+      color: $accent;
+    }
+  }
+
+  &__text {
+    color: $light;
+    font-size: $t-base;
+    font-weight: 400;
+
+    &--main {
+      color: $o-dark;
+    }
+  }
+
+  &__pricing {
+    margin-bottom: $sub-pad;
+    color: $o-light;
+    font-size: $t-base;
+    font-weight: 400;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__price {
+    color: $light;
+    font-size: $t-big;
+    font-weight: 700;
+  }
+}
+
+// === BUTTON ===
+$button-radius: .25rem;
+$button-pad: 0.875rem;
+
+.button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: $button-pad;
+  border: none;
+  border-radius: $button-radius;
+  background-color: $accent;
+  box-shadow: 0 .25rem .5rem $shadow;
+  color: $light;
+  font-size: $t-base;
+  font-weight: 700;
+  text-align: center;
+
+  transition: opacity 250ms ease-in-out;
+
+  &:hover {
+    opacity: .5;
+  }
+
+  &--card {
+    margin-top: auto;
+  }
+}
+
+////// --- LAYOUT --- //////
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
