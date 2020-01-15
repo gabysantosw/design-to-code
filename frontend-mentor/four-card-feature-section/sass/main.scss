@@ -138,6 +138,7 @@ body {
   &--blue::before {  background-color: $blue;  }
 
   &__heading {
+    margin-bottom: $inner-pad;
     font-size: $t-subheading;
     font-weight: 600;
   }
