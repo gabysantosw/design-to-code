@@ -136,6 +136,10 @@ body {
     color: $primary;
     font-size: $t-heading;
     font-weight: 700;
+
+    @include for-mobile {
+      font-size: 1.25rem;
+    }
   }
 
   &__subheading {
