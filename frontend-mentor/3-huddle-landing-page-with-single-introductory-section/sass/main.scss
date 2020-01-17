@@ -1,0 +1,273 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(257, 40%, 49%);
+
+$light: hsl(257, 10%, 95%);
+
+// effets
+$shadow: hsla(257, 20%, 20%, .5);
+
+// spacing
+$main-pad: 2.375rem;
+$sub-pad: 1.125rem;
+$base-pad: 1rem;
+$flex-pad: 3.625rem;
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$content-width: 80rem + $main-pad * 2;
+$logo-width: 7.6rem;
+$big-logo-width: 12.5rem;
+
+// typography
+$t-heading: 1.5rem;
+$t-base: 1rem;
+$t-min: 0.875rem;
+
+$big-t-heading: 2.5rem;
+$big-t-base: 1.125rem;
+
+// breakpoints
+$switch: 54rem;
+$big-screens: 37rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// media queries
+@mixin layout-switch {
+  @media screen and (min-width: $switch) {
+    @content;
+  }
+}
+
+@mixin size-switch {
+  @media screen and (min-width: $big-screens) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, h1, p, ul {
+  margin: 0;
+}
+
+ul, button {
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+// === UTILITY ===
+.visuallyHidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  // for IE6/7
+  clip: rect(1px 1px 1px 1px);
+  white-space: nowrap;
+}
+
+// === MAIN ===
+body {
+  background-color: $primary;
+  color: $light;
+  font-family: Poppins, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+
+  background-image: url(../images/bg-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top;
+
+  @include layout-switch {
+    background-image: url(../images/bg-desktop.svg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__content {
+    width: $content-width;
+    max-width: 100%;
+    min-height: 95vh;
+    box-sizing: border-box;
+    padding: $main-pad;
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+////// --- COMPONENTS --- //////
+.logo {
+  width: $logo-width;
+  margin-bottom: auto;
+
+  @include size-switch {
+    width: $big-logo-width;
+  }
+
+  &__image {
+    width: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include layout-switch {
+    align-self: center;
+    flex-direction: row;
+  }
+
+  &__image {
+    width: 30rem;
+    max-width: 100%;
+    margin: #{$flex-pad / 2} 0;
+
+    @include size-switch {
+      margin: $flex-pad 0;
+    }
+
+    @include layout-switch {
+      margin: 0 $flex-pad 0 0;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include layout-switch {
+      width: 30rem;
+      text-align: left;
+
+      align-items: flex-start;
+    }
+  }
+
+  &__heading {
+    margin-bottom: $base-pad;
+    font-size: $t-heading;
+
+    @include size-switch {
+      margin-bottom: $sub-pad;
+    }
+
+    @include layout-switch {
+      font-size: $big-t-heading;
+    }
+  }
+
+  &__description {
+    width: 58ch;
+    max-width: 100%;
+    margin-bottom: $sub-pad;
+    font-size: $t-base;
+
+    @include layout-switch {
+      font-size: $big-t-base;
+    }
+  }
+}
+
+.button {
+  width: 12.5rem;
+  box-sizing: border-box;
+  padding: 0.75em;
+  border: none;
+  border-radius: 10rem;
+  background-color: $light;
+  box-shadow: 0 .5rem .75rem $shadow;
+  color: $primary;
+  font-size: $t-min;
+  text-align: center;
+
+  transition: opacity 250ms ease-in-out, transform 150ms ease-in-out;
+
+  @include layout-switch {
+    font-size: $big-t-base;
+  }
+
+  &:hover {
+    opacity: .5;
+    transform: translateY(.25rem);
+  }
+}
+
+.socials {
+  margin-top: $main-pad;
+
+  @include size-switch {
+    margin-top: auto;
+  }
+
+  @include layout-switch {
+    align-self: flex-end;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__link {
+    $size: $MIN_TOUCH_SIZE;
+    display: block;
+    width: $size;
+    height: $size;
+    margin: 0 .5rem;
+    border: 2px solid $light;
+    border-radius: 50%;
+    color: $light;
+    font-size: 1.25rem;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+}
+
+////// --- LAYOUT --- //////
+
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
