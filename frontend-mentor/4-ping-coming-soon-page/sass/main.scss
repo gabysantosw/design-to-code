@@ -1,0 +1,319 @@
+////// --- UTILS --- //////
+
+// === VARIABLES ===
+
+// colorbook
+$primary: hsl(223, 87%, 63%);
+$danger: hsl(354, 100%, 66%);
+
+$dark: hsl(209, 33%, 12%);
+$light: hsl(209, 0%, 95%);
+$neutro: hsl(0, 0%, 59%);
+
+// effects
+$primary-shadow: hsl(223, 100%, 88%);
+
+// spacing 
+$main-pad: 1.625rem;
+$flex-pad: 3rem;
+
+// sizing
+$ADDRESS_BAR: 6rem; // 96px
+$MIN_TOUCH_SIZE: 2.75rem; // 44px
+$content-width: 43.5rem;
+
+// typography
+$t-heading: 1.375rem;
+$t-base: 1rem;
+$t-small: 0.75rem;
+$t-copy: 0.625rem;
+
+$big-t-heading: 3rem;
+$t-subheading: 1.25rem;
+
+// breakpoints
+$size-switch: 28rem;
+
+// === FUNCTIONS ===
+
+// === MIXINS ===
+
+// media queries
+@mixin size-switch {
+  @media screen and (min-width: $size-switch) {
+    @content;
+  }
+}
+
+// === PLACEHOLDERS ===
+
+////// --- BASE --- //////
+
+// === RESET ===
+body, h1, p, ul {
+  margin: 0;
+}
+
+ul, input, button {
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+// === UTILITY ===
+.visuallyHidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  // for IE6/7
+  clip: rect(1px 1px 1px 1px);
+  white-space: nowrap;
+}
+
+// === MAIN ===
+body {
+  background-color: $light;
+  color: $dark;
+  font-family: 'Libre Franklin', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: $content-width;
+  max-width: 100%;
+  min-height: 95vh;
+  box-sizing: border-box;
+  padding: $main-pad;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &__header {
+    margin-top: $main-pad;
+    margin-bottom: $main-pad;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+////// --- COMPONENTS --- //////
+.logo {
+  width: 3.375rem;
+
+  @include size-switch {
+    width: 5.5rem;
+  }
+}
+
+.content {
+  margin-bottom: $main-pad;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__heading {
+    margin-bottom: 0.8em;
+    color: $neutro;
+    font-size: $t-heading;
+    font-weight: 300;
+
+    @include size-switch {
+      font-size: $big-t-heading;
+    }
+
+    &--bold {
+      color: $dark;
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    margin-bottom: 2.6em;
+    font-size: $t-small;
+    font-weight: 300;
+
+    @include size-switch {
+      font-size: $t-subheading;
+    }
+  }
+
+  &__form {
+    width: 17.5rem;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    @include size-switch {
+      width: 100%;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+}
+
+.illustration {
+  width: $content-width - 10rem;
+  max-width: 100%;
+  margin-bottom: $main-pad;
+}
+
+.input {
+  margin-bottom: 0.625em;
+  padding: 0.625em 1.875em;
+  border: 1px solid $neutro;
+  border-radius: 10rem;
+  background-color: transparent;
+  font-size: $t-base;
+
+  opacity: .5;
+  position: relative;
+
+  @include size-switch {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: $main-pad;
+    padding: 1.125em 1.875em;
+  }
+
+  &:focus {
+    opacity: 1;
+  }
+
+  &:invalid {
+    border-color: $danger;
+    box-shadow: none;
+  }
+
+  &__label {
+    position: relative;
+
+    @include size-switch {
+      position: absolute;
+      bottom: 0;
+    }
+
+    &::after {
+      content: 'Please provide a valid email address ';
+      display: block;
+      position: absolute;
+      bottom: -0.75em;
+      left: 1em;
+
+      color: $danger;
+      font-size: $t-copy;
+      font-style: italic;
+
+      // initial state
+      transform: 
+        translateY(-1.5rem);
+      opacity: 0;
+
+      @include size-switch {
+        width: 20rem;
+        font-size: $t-small;
+      }
+    }
+  }
+
+  &:invalid + &__label::after {
+    transition: 
+      opacity 250ms 50ms ease-in-out,
+      transform 250ms ease-in-out;
+
+    // invalid state
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &:invalid ~ .button {
+    transform: translateY(1.5em);
+
+    @include size-switch {
+      transform: translateY(0);
+    }
+  }
+}
+
+.button {
+  padding: 1em;
+  border: none;
+  border-radius: 10rem;
+  background-color: $primary;
+  box-shadow: 0 .5rem .75rem $primary-shadow;
+  color: $light;
+  font-size: $t-small;
+  font-weight: 600;
+  letter-spacing: .1em;
+
+  transition: 
+    opacity 250ms ease-in-out,
+    transform 250ms ease-in-out;
+
+  @include size-switch {
+    font-size: $t-base;
+    width: 12.5rem;
+    box-sizing: border-box;
+    padding: 1.125em;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.social {
+  margin-bottom: $main-pad;
+  display: flex;
+  justify-content: center;
+
+  &__link {
+    $size: $MIN_TOUCH_SIZE;
+    display: block;
+    width: $size;
+    height: $size;
+    margin: 0 .5rem;
+    box-shadow: 0 0 .125rem $primary-shadow;
+    border-radius: 50%;
+    color: $primary;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: $primary;
+      color: $light;
+    }
+  }
+}
+
+.copyright {
+  color: $neutro;
+  font-size: $t-copy;
+  text-align: center;
+}
+
+////// --- LAYOUT --- //////
+
+////// --- PAGES --- //////
+
+////// --- THEMES --- //////
